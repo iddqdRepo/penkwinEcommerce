@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  //testing github actions
+  //testing branch frontend new after deletion
   return (
     <div className={styles.container}>
       <Head>

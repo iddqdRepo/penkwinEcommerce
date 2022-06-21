@@ -23,15 +23,15 @@ function NavbarComponent() {
               height="15"
               inline={true}
             />
-            {/* <ul>
-                <li>All Products</li>
-                <li>Medical Cushions</li>
-                <li>Bunion Care</li>
-                <li>Arthritis Treatment</li>
-                <li>Plantar Fasciitis</li>
-                <li>Metatarsal Pain</li>
-                <li>Eye Care</li>
-              </ul> */}
+            <ul>
+              <li>All Products</li>
+              <li>Medical Cushions</li>
+              <li>Bunion Care</li>
+              <li>Arthritis Treatment</li>
+              <li>Plantar Fasciitis</li>
+              <li>Metatarsal Pain</li>
+              <li>Eye Care</li>
+            </ul>
           </div>
           <div className={styles.navItem}>Instructions</div>
           <div className={styles.navItem}>
@@ -43,11 +43,11 @@ function NavbarComponent() {
               height="15"
               inline={true}
             />
-            {/* <ul>
-                <li>PC (Polycarbonate)</li>
-                <li>PU (Polyurethanes)</li>
-                <li>SEBS</li>
-              </ul> */}
+            <ul>
+              <li>PC (Polycarbonate)</li>
+              <li>PU (Polyurethanes)</li>
+              <li>SEBS</li>
+            </ul>
           </div>
 
           <div className={styles.navItem}>About Us</div>
@@ -60,6 +60,7 @@ function NavbarComponent() {
               className={styles.icon}
               icon="ant-design:search-outlined"
               color="white"
+              width="50px"
             />
           </div>
           <div>
@@ -67,6 +68,7 @@ function NavbarComponent() {
               className={styles.icon}
               icon="bi:person-circle"
               color="white"
+              width="50px"
             />
           </div>
           <div>
@@ -74,9 +76,36 @@ function NavbarComponent() {
               className={styles.icon}
               icon="akar-icons:shopping-bag"
               color="white"
+              width="50px"
             />
           </div>
         </div>
+      </div>
+      <div className={styles.d}>
+        <ul className={styles.firstUL}>
+          <li className={styles.firstLI}>
+            <a className={styles.aTag} href="#">
+              Dropdown Link
+            </a>
+            <ul className={styles.secondUL}>
+              <li className={styles.secondLIDropdownList}>
+                <a className={styles.aTag} href="#">
+                  Link 1
+                </a>
+              </li>
+              <li className={styles.secondLIDropdownList}>
+                <a className={styles.aTag} href="#">
+                  Link 2
+                </a>
+              </li>
+              <li className={styles.secondLIDropdownList}>
+                <a className={styles.aTag} href="#">
+                  Link 3
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </>
   );

@@ -9,6 +9,7 @@
   display: flex;
   background-color: #388087;
   flex-direction: rows;
+  justify-content: center;
 }
 .imageContainer {
   display: flex;
@@ -42,6 +43,79 @@
   background-color: white;
 }
 
+.navItem > ul {
+  display: block;
+  /* display: none; */
+  /* Border */
+  /* border: 1px solid rgba(0, 0, 0, 0.3); */
+  /* Hidden by default */
+
+  /* Absolute position */
+  left: 0;
+  position: absolute;
+  top: 100%;
+
+  /* Reset styles */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  /* Width */
+  width: inherit;
+  height: inherit;
+}
+
 .chevron {
   padding-left: 5px;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  padding-right: 25px;
+}
+/* --------------------------------------------------------------------------- */
+.d {
+  background-color: green;
+}
+.d .aTag {
+  color: white;
+  font-size: 20px;
+  padding: 15px;
+  display: inline-block;
+}
+
+/* WHY IS THE USER AGENT STYLESHEET OVERRIDING MY SECONDUL??? ADDING A PADDING OF 40PX */
+.firstUL {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.firstUL .firstLI {
+  display: inline-block;
+}
+.firstUL .firstLI:hover {
+  background: #555;
+}
+.firstUL .firstLI:hover .secondUL {
+  display: block;
+}
+.firstUL .firstLI .secondUL {
+  position: absolute;
+  width: 200px;
+}
+.firstUL .firstLI .secondUL .secondLIDropdownList {
+  background: #555;
+  display: block;
+}
+.firstUL .firstLI .secondUL .secondLIDropdownList .aTag {
+  display: block !important;
+}
+.firstUL .firstLI .secondUL .secondLIDropdownList:hover {
+  background: #666;
 }

@@ -3,87 +3,96 @@ import React, { useRef } from "react";
 import styles from "./cardCompoment.module.css";
 
 function CardComponent() {
-  const cardSectionRef = useRef(null);
-  const cardOneRef = useRef<HTMLDivElement>(null);
-  const cardTwoRef = useRef<HTMLDivElement>(null);
-  const cardThreeRef = useRef<HTMLDivElement>(null);
-  const leftButtonRef = useRef<HTMLDivElement>(null);
-  const rightButtonRef = useRef<HTMLDivElement>(null);
+  const cardSectionRef = useRef<null | HTMLDivElement>(null);
+  const cardOneRef = useRef<null | HTMLDivElement>(null);
+  const cardTwoRef = useRef<null | HTMLDivElement>(null);
+  const cardThreeRef = useRef<null | HTMLDivElement>(null);
+  const leftButtonRef = useRef<null | HTMLDivElement>(null);
+  const rightButtonRef = useRef<null | HTMLDivElement>(null);
   const track = [{ center: false }, { center: true }, { center: false }];
 
-  const resetStyle = (...elements) => {
-    console.log("elements = ", elements);
+  const resetMarginsToZero = (
+    ...elements: React.RefObject<HTMLDivElement>[]
+  ) => {
     elements.forEach((el) => {
-      el.current.style.marginRight = "0px";
-      el.current.style.marginLeft = "0px";
+      if (el.current != null) {
+        el.current.style.marginRight = "0px";
+        el.current.style.marginLeft = "0px";
+      }
     });
     console.log("styles reset");
   };
 
-  const leftButtonClick = () => {
-    // cardOneRef.current.style.marginRight = "0px";
-    // cardOneRef.current.style.marginLeft = "0px";
-    // cardThreeRef.current.style.marginRight = "0px";
-    // cardThreeRef.current.style.marginLeft = "0px";
-    resetStyle(cardOneRef, cardThreeRef);
-    rightButtonRef.current.className = `${styles.rightButtonContainer}`;
-    leftButtonRef.current.className = `${styles.leftButtonContainer}`;
-    //^if it's the middle focused
-    if (track[1].center === true) {
-      console.log(cardSectionRef.current.offsetWidth);
-      cardOneRef.current.className = `${styles.cardLeft}  ${styles.cardFocused}`;
-      cardOneRef.current.style.marginLeft = `${cardSectionRef.current.offsetWidth}px`;
-      cardTwoRef.current.className = `${styles.cardMiddle}  ${styles.cardUnfocused}`;
-      cardThreeRef.current.className = `${styles.cardRight}  ${styles.remove}`;
-      leftButtonRef.current.className = `${styles.leftButtonContainer}  ${styles.remove}`;
-      track[1].center = false;
-      track[0].center = true;
-    } else {
-      cardOneRef.current.className = `${styles.cardLeft}  ${styles.cardUnfocused}`;
-      cardTwoRef.current.className = `${styles.cardMiddle}  ${styles.cardFocused}`;
-      cardThreeRef.current.className = `${styles.cardRight}  ${styles.cardUnfocused}`;
-      leftButtonRef.current.className = `${styles.leftButtonContainer}`;
-      cardOneRef.current.style.marginRight = "0px";
-      cardOneRef.current.style.marginLeft = "0px";
-      track[1].center = true;
-      track[2].center = false;
+  const focusRemoveOrUnfocusCards = (
+    element: React.RefObject<HTMLDivElement>,
+    action: string
+  ) => {
+    if (element.current != null) {
+      if (action === "focus") {
+        element.current.className = `${styles.card}  ${styles.cardFocused}`;
+      }
+
+      if (action === "unfocus") {
+        element.current.className = `${styles.card}  ${styles.cardUnfocused}`;
+      }
+
+      if (action === "remove") {
+        element.current.className = `${styles.card}  ${styles.remove}`;
+      }
     }
-    console.log(track);
   };
 
-  const rightButtonClick = () => {
-    resetStyle(cardOneRef, cardThreeRef);
+  const directionButton = (direction: String) => {
+    resetMarginsToZero(cardOneRef, cardThreeRef);
+    if (rightButtonRef.current != null && leftButtonRef.current != null) {
+      rightButtonRef.current.className = `${styles.rightButtonContainer}`;
+      leftButtonRef.current.className = `${styles.leftButtonContainer}`;
+    }
 
-    rightButtonRef.current.className = `${styles.rightButtonContainer}`;
-    leftButtonRef.current.className = `${styles.leftButtonContainer}`;
-
-    if (
-      cardOneRef.current != null &&
-      cardTwoRef.current != null &&
-      cardThreeRef.current != null
-    ) {
-      if (track[1].center) {
-        console.log("rightButtonClicked");
-        console.log(cardSectionRef.current.offsetWidth);
-        cardOneRef.current.className = `${styles.cardLeft} ${styles.remove}`;
-        cardTwoRef.current.className = `${styles.cardMiddle} ${styles.cardUnfocused}`;
-        cardThreeRef.current.style.marginRight = `${cardSectionRef.current.offsetWidth}px`;
-        cardThreeRef.current.className = `${styles.cardLeft} ${styles.cardFocused}`;
+    if (direction === "right") {
+      //^if middle card is in focus (and cardThree and rightButton aren't null)
+      if (track[1].center && cardThreeRef.current && rightButtonRef.current) {
+        focusRemoveOrUnfocusCards(cardOneRef, "remove");
+        focusRemoveOrUnfocusCards(cardTwoRef, "unfocus");
+        cardThreeRef.current.style.marginRight = `${
+          cardSectionRef.current!.offsetWidth
+        }px`;
+        focusRemoveOrUnfocusCards(cardThreeRef, "focus");
         rightButtonRef.current.className = `${styles.rightButtonContainer} ${styles.remove}`;
         track[1].center = false;
         track[2].center = true;
       } else {
-        cardOneRef.current.className = `${styles.cardLeft} ${styles.cardUnfocused}`;
-        cardTwoRef.current.className = `${styles.cardMiddle} ${styles.cardFocused}`;
-        cardThreeRef.current.className = `${styles.cardRight} ${styles.cardUnfocused}`;
-        cardOneRef.current.style.marginRight = "0px";
-        cardOneRef.current.style.marginLeft = "0px";
+        focusRemoveOrUnfocusCards(cardOneRef, "unfocus");
+        focusRemoveOrUnfocusCards(cardTwoRef, "focus");
+        focusRemoveOrUnfocusCards(cardThreeRef, "unfocus");
+        resetMarginsToZero(cardOneRef);
         track[1].center = true;
         track[2].center = false;
-        leftButtonRef.current.className = `${styles.leftButtonContainer}`;
+        leftButtonRef.current!.className = `${styles.leftButtonContainer}`;
       }
     }
-    console.log(track);
+
+    if (direction === "left") {
+      //^if middle card is in focus
+      if (track[1].center && cardOneRef.current && leftButtonRef.current) {
+        focusRemoveOrUnfocusCards(cardOneRef, "focus");
+        cardOneRef.current.style.marginLeft = `${cardSectionRef.current?.offsetWidth}px`;
+        focusRemoveOrUnfocusCards(cardTwoRef, "unfocus");
+        focusRemoveOrUnfocusCards(cardThreeRef, "remove");
+        leftButtonRef.current.className = `${styles.leftButtonContainer}  ${styles.remove}`;
+        track[1].center = false;
+        track[0].center = true;
+      } else {
+        focusRemoveOrUnfocusCards(cardOneRef, "unfocus");
+        focusRemoveOrUnfocusCards(cardTwoRef, "focus");
+        focusRemoveOrUnfocusCards(cardThreeRef, "unfocus");
+        leftButtonRef.current!.className = `${styles.leftButtonContainer}`;
+        resetMarginsToZero(cardOneRef);
+
+        track[1].center = true;
+        track[2].center = false;
+      }
+    }
   };
 
   return (
@@ -103,14 +112,13 @@ function CardComponent() {
           <div
             className={styles.leftButtonContainer}
             ref={leftButtonRef}
-            onClick={leftButtonClick}
+            onClick={() => directionButton("left")}
           >
             <div className={styles.leftButtonImage}></div>
           </div>
           {/*//^----------------------------------------------------  CARD LEFT */}
           <div
-            className={`${styles.cardLeft}  ${styles.cardUnfocused}`}
-            // style={{ marginLeft: "300px" }}
+            className={`${styles.card}  ${styles.cardUnfocused}`}
             ref={cardOneRef}
           >
             <img
@@ -129,7 +137,7 @@ function CardComponent() {
           </div>
           {/*//^----------------------------------------------------  CARD MIDDLE */}
           <div
-            className={`${styles.cardMiddle} ${styles.cardFocused}`}
+            className={`${styles.card} ${styles.cardFocused}`}
             ref={cardTwoRef}
           >
             <img
@@ -148,7 +156,7 @@ function CardComponent() {
           </div>
           {/*//^----------------------------------------------------  CARD RIGHT */}
           <div
-            className={`${styles.cardLeft}  ${styles.cardUnfocused}`}
+            className={`${styles.card}  ${styles.cardUnfocused}`}
             ref={cardThreeRef}
           >
             <img
@@ -165,31 +173,9 @@ function CardComponent() {
               <button className={styles.cardButton}>Learn More</button>
             </div>
           </div>
-
-          {/* <div
-            className={`${styles.cardRight} ${styles.cardUnfocused}`}
-            // ${styles.remove}
-            // style={{ marginRight: "300px" }}
-            ref={cardThreeRef}
-          >
-            <img
-              className={styles.cardImage}
-              src="/smallSliderTailbone.png"
-              alt=""
-            />
-            <div className={styles.cardSection}>
-              <div className={styles.cardTitle}>Tailbone Pain</div>
-              <div className={styles.cardDescription}>
-                Make tailbone pain a thing of the past, Penkwin&apos;s coccyx
-                products will make you feel like you&apos;re sitting on a cloud.
-              </div>
-              <button className={styles.cardButton}>Learn More</button>
-            </div>
-          </div> */}
-
           <div
             className={styles.rightButtonContainer}
-            onClick={rightButtonClick}
+            onClick={() => directionButton("right")}
             ref={rightButtonRef}
           >
             <div className={styles.rightButtonImage}></div>

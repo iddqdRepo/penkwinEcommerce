@@ -1,10 +1,13 @@
 import styles from "../styles/home.module.css";
 import CardComponent from "../components/CardComponent/CardComponent";
+import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
 
 const Home = () => {
   //testing branch frontend new after deletion
   return (
     <>
+      <NavbarComponent />
+
       <div className={styles.heroBanner}>Hero Image</div>
       <CardComponent />
 

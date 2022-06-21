@@ -1,0 +1,47 @@
+/* Colour #388087 
+    font-family: Merriweather,Arial,Helvetica,sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 18px;
+*/
+
+.navbarContainer {
+  display: flex;
+  background-color: #388087;
+  flex-direction: rows;
+}
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImage {
+  max-height: 70%;
+  width: auto;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+}
+
+.navItem {
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 18px;
+  color: white;
+  padding: 10px;
+}
+
+.navItem:hover {
+  background-color: white;
+}
+
+.chevron {
+  padding-left: 5px;
+}

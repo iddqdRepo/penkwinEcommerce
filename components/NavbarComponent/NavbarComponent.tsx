@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { Icon } from "@iconify/react";
 import styles from "./navbarComponent.module.css";
 

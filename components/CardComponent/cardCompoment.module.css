@@ -10,8 +10,8 @@ and the container just grows to fit that
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 70px;
-  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-top: 100px;
 }
 
 .cardTitleDescContainer {

@@ -1,0 +1,97 @@
+/* 
+color:#388087;
+*/
+
+.favouritesSectionContainer {
+}
+
+.cardTitleDescContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 30vh;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-left: 55px;
+  padding-right: 55px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cardHeaderTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 2.625rem;
+  font-weight: 700;
+  color: #4a4a4a;
+}
+
+.cardHeaderDescription {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #69727b;
+  line-height: 1.5;
+}
+
+.productsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.favouriteProductContainer {
+  display: flex;
+  max-width: 23%;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.image {
+  max-height: auto;
+  width: 100%;
+}
+.title {
+  color: #3d4246;
+  text-align: center;
+  font-family: Work Sans, sans-serif;
+  font-weight: 600;
+  /* margin-bottom: 1.5rem; */
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.price {
+  color: #3d4246;
+  text-align: center;
+  font-family: Work Sans, sans-serif;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.learnMoreButton {
+  background-color: #388087;
+  padding: 10px 18px;
+  font-family: Work Sans, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: white;
+  text-decoration-line: none;
+  border: 0;
+}
+
+/* 
+box-shadow: 0 30px 70px -20px #00000080, 0 53px 50px -50px;
+ */

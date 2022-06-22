@@ -21,7 +21,7 @@
   max-height: 70%;
   width: auto;
 }
-
+/*^ --------------------------------------------------------- */
 .linksContainer {
   display: flex;
   flex-direction: row;
@@ -29,7 +29,16 @@
   justify-content: center;
   align-items: center;
 }
-
+.dropdownLink {
+  color: black;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1rem;
+  padding: 18px;
+  /* padding-bottom: 8px; */
+  /* border: 1px solid #388087; */
+}
 .navItem {
   font-family: Merriweather, Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -37,33 +46,42 @@
   font-size: 18px;
   color: white;
   padding: 10px;
+  list-style: none;
 }
 
 .navItem:hover {
   background-color: white;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 18px;
+  color: black;
+  padding: 10px;
+  list-style: none;
 }
-
-.navItem > ul {
-  display: block;
-  /* display: none; */
-  /* Border */
-  /* border: 1px solid rgba(0, 0, 0, 0.3); */
-  /* Hidden by default */
-
-  /* Absolute position */
-  left: 0;
+.navItem:hover .ulDropdownList {
+  display: flex;
+  flex-direction: column;
+}
+.ulDropdownList {
   position: absolute;
-  top: 100%;
-
-  /* Reset styles */
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-
-  /* Width */
-  width: inherit;
-  height: inherit;
+  margin-left: -10px;
+  margin-top: 10px;
+  z-index: 99999999;
+  display: none;
 }
+.liDropdownItem {
+  background: white;
+  list-style: none;
+}
+.dropdownLink {
+  display: block !important;
+}
+.liDropdownItem:hover {
+  background-color: #f6f6f2;
+}
+
+/*^ ------------------------------------------------------------------ */
 
 .chevron {
   padding-left: 5px;
@@ -80,42 +98,42 @@
   padding-right: 25px;
 }
 /* --------------------------------------------------------------------------- */
-.d {
+/* .navContainerDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
   background-color: green;
+  list-style: none;
 }
-.d .aTag {
+
+.navLinksContainer {
+  display: flex;
+  flex-direction: row;
+}
+.dropdownLink {
   color: white;
   font-size: 20px;
   padding: 15px;
-  display: inline-block;
 }
 
-/* WHY IS THE USER AGENT STYLESHEET OVERRIDING MY SECONDUL??? ADDING A PADDING OF 40PX */
-.firstUL {
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
-.firstUL .firstLI {
-  display: inline-block;
-}
-.firstUL .firstLI:hover {
+.navItemDiv:hover {
   background: #555;
 }
-.firstUL .firstLI:hover .secondUL {
-  display: block;
+.navItemDiv:hover .ulDropdownList {
+  display: flex;
+  flex-direction: column;
 }
-.firstUL .firstLI .secondUL {
+.ulDropdownList {
   position: absolute;
-  width: 200px;
+  display: none;
 }
-.firstUL .firstLI .secondUL .secondLIDropdownList {
+.liDropdownItem {
   background: #555;
-  display: block;
+  list-style: none;
 }
-.firstUL .firstLI .secondUL .secondLIDropdownList .aTag {
+.dropdownLink {
   display: block !important;
 }
-.firstUL .firstLI .secondUL .secondLIDropdownList:hover {
+.liDropdownItem:hover {
   background: #666;
-}
+} */

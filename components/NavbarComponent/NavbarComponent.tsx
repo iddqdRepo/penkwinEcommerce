@@ -23,14 +23,42 @@ function NavbarComponent() {
               height="15"
               inline={true}
             />
-            <ul>
-              <li>All Products</li>
-              <li>Medical Cushions</li>
-              <li>Bunion Care</li>
-              <li>Arthritis Treatment</li>
-              <li>Plantar Fasciitis</li>
-              <li>Metatarsal Pain</li>
-              <li>Eye Care</li>
+            <ul className={styles.ulDropdownList}>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  All Products
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  Medical Cushions
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  Bunion Care
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  Arthritis Treatment
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  Plantar Fasciitis
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  Metatarsal Pain
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  Eye Care
+                </a>
+              </li>
             </ul>
           </div>
           <div className={styles.navItem}>Instructions</div>
@@ -43,10 +71,22 @@ function NavbarComponent() {
               height="15"
               inline={true}
             />
-            <ul>
-              <li>PC (Polycarbonate)</li>
-              <li>PU (Polyurethanes)</li>
-              <li>SEBS</li>
+            <ul className={styles.ulDropdownList}>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  PC (Polycarbonate)
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  PU (Polyurethanes)
+                </a>
+              </li>
+              <li className={styles.liDropdownItem}>
+                <a className={styles.dropdownLink} href="#">
+                  SEBS
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -80,32 +120,6 @@ function NavbarComponent() {
             />
           </div>
         </div>
-      </div>
-      <div className={styles.d}>
-        <ul className={styles.firstUL}>
-          <li className={styles.firstLI}>
-            <a className={styles.aTag} href="#">
-              Dropdown Link
-            </a>
-            <ul className={styles.secondUL}>
-              <li className={styles.secondLIDropdownList}>
-                <a className={styles.aTag} href="#">
-                  Link 1
-                </a>
-              </li>
-              <li className={styles.secondLIDropdownList}>
-                <a className={styles.aTag} href="#">
-                  Link 2
-                </a>
-              </li>
-              <li className={styles.secondLIDropdownList}>
-                <a className={styles.aTag} href="#">
-                  Link 3
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
       </div>
     </>
   );

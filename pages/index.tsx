@@ -1,4 +1,4 @@
-import styles from "../styles/home.module.css";
+import styles from "../styles/Home.module.css";
 import CardComponent from "../components/CardComponent/CardComponent";
 import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
 

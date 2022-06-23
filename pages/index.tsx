@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import CardComponent from "../components/CardComponent/CardComponent";
 import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
 import CustomerFavouritesContainer from "../components/CustomerFavouritesComponent/CustomerFavouritesComponent";
+import InfoComponent from "../components/InfoComponent/InfoComponent";
 
 const Home = () => {
   //testing branch frontend new after deletion
@@ -11,13 +12,18 @@ const Home = () => {
     <>
       <NavbarComponent />
 
-      <img className={styles.heroBanner} src="/heroBannerImage.png" alt="" />
+      <img
+        className={styles.heroBanner}
+        src="/heroBannerImage.png"
+        alt=""
+        // style={{ boxShadow: "#000000 0px 30px 70px -20p" }}
+      />
 
       <CardComponent />
 
       <CustomerFavouritesContainer />
 
-      <div className={styles.riskContainer}></div>
+      <InfoComponent />
 
       <div className={styles.workWithContainer}></div>
 

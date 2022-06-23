@@ -1,0 +1,127 @@
+.infoContainer {
+  display: flex;
+  width: 75%;
+  background-color: #f9f8f3;
+  margin: 0 auto;
+  padding: 65px 60px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 1 60%;
+  padding: 0px 72px 0px 12px;
+}
+
+.textContainerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 1 60%;
+  padding: 0px 0px 0px 72px;
+}
+
+.title {
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 3.3125rem;
+  font-weight: 700;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #69727b;
+  line-height: 1.5;
+}
+
+.imageContainer {
+  display: flex;
+  flex: 0 1 40%;
+}
+.imageContainerLeft {
+  display: flex;
+}
+
+.image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: auto;
+  margin: -120px 0px 0px;
+  box-shadow: #000000 0px 30px 70px -20px;
+  border-radius: 10%;
+}
+.imageLeft {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: -120px 0px 0px;
+  box-shadow: #000000 0px 30px 70px -20px;
+  border-radius: 10%;
+}
+
+@media only screen and (max-width: 1400px) {
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-family: Merriweather, Arial, Helvetica, sans-serif;
+    font-size: 3.3125rem;
+    font-weight: 700;
+    color: #4a4a4a;
+  }
+
+  .description {
+    text-align: center;
+    font-family: Merriweather, Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #69727b;
+    line-height: 1.5;
+  }
+  .imageContainer,
+  .imageContainerLeft {
+    display: flex;
+    justify-content: center;
+  }
+  .image {
+    width: auto;
+    max-width: 50%;
+    height: auto;
+    max-height: auto;
+    box-shadow: #000000 0px 30px 70px -20px;
+    border-radius: 10%;
+    margin: 0px;
+    margin-top: 20px;
+  }
+  .imageLeft {
+    width: auto;
+    max-width: 50%;
+    height: auto;
+    max-height: auto;
+    box-shadow: #000000 0px 30px 70px -20px;
+    border-radius: 10%;
+    margin: 0px;
+    margin-bottom: 40px;
+  }
+}

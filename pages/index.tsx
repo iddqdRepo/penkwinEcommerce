@@ -5,6 +5,7 @@ import CardComponent from "../components/CardComponent/CardComponent";
 import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
 import CustomerFavouritesContainer from "../components/CustomerFavouritesComponent/CustomerFavouritesComponent";
 import InfoComponent from "../components/InfoComponent/InfoComponent";
+import OurProducts from "../components/OurProductsComponent copy/OurProductsComponent";
 
 const Home = () => {
   //testing branch frontend new after deletion
@@ -25,9 +26,7 @@ const Home = () => {
 
       <InfoComponent />
 
-      <div className={styles.workWithContainer}></div>
-
-      <div className={styles.ourProductsContainer}></div>
+      <OurProducts />
 
       <div className={styles.testimonialContainer}></div>
     </>

@@ -6,7 +6,7 @@ import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
 import CustomerFavouritesContainer from "../components/CustomerFavouritesComponent/CustomerFavouritesComponent";
 import InfoComponent from "../components/InfoComponent/InfoComponent";
 import OurProducts from "../components/OurProductsComponent copy/OurProductsComponent";
-
+import TestimonialComponent from "../components/TestimonialComponent/TestimonialComponent";
 const Home = () => {
   //testing branch frontend new after deletion
   return (
@@ -28,7 +28,7 @@ const Home = () => {
 
       <OurProducts />
 
-      <div className={styles.testimonialContainer}></div>
+      <TestimonialComponent />
     </>
   );
 };

@@ -4,7 +4,7 @@ import styles from "./ourProductsComponent.module.css";
 function OurProducts() {
   return (
     <>
-      <div className={styles.favouritesSectionContainer}>
+      <div className={styles.productsSectionContainer}>
         <div className={styles.cardTitleDescContainer}>
           <div className={styles.cardHeaderTitle}>Our Products</div>
         </div>

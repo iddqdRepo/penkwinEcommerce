@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import styles from "./navbarComponent.module.css";
+import categories from "../../dummyData/categories";
 
 function NavbarComponent() {
   return (
@@ -26,41 +27,18 @@ function NavbarComponent() {
               inline={true}
             />
             <ul className={styles.ulDropdownList}>
-              <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  All Products
-                </a>
-              </li>
-              <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  Medical Cushions
-                </a>
-              </li>
-              <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  Bunion Care
-                </a>
-              </li>
-              <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  Arthritis Treatment
-                </a>
-              </li>
-              <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  Plantar Fasciitis
-                </a>
-              </li>
-              <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  Metatarsal Pain
-                </a>
-              </li>
-              <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  Eye Care
-                </a>
-              </li>
+              {categories["categories"].map((navItem) => {
+                return (
+                  <li key={navItem} className={styles.liDropdownItem}>
+                    <a
+                      className={styles.dropdownLink}
+                      href={navItem.replace(/ /g, "")}
+                    >
+                      {navItem}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className={styles.navItem}>Instructions</div>

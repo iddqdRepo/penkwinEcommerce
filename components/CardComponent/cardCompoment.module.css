@@ -12,6 +12,7 @@ and the container just grows to fit that
   width: 100%;
   padding-bottom: 100px;
   padding-top: 100px;
+  margin-bottom: 80px;
 }
 
 .cardTitleDescContainer {
@@ -30,7 +31,7 @@ and the container just grows to fit that
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
   font-size: 2.625rem;
   font-weight: 700;
   color: #4a4a4a;

@@ -7,6 +7,8 @@ import CustomerFavouritesContainer from "../components/CustomerFavouritesCompone
 import InfoComponent from "../components/InfoComponent/InfoComponent";
 import OurProducts from "../components/OurProductsComponent copy/OurProductsComponent";
 import TestimonialComponent from "../components/TestimonialComponent/TestimonialComponent";
+import FooterComponent from "../components/FooterComponent copy/FooterComponent";
+
 const Home = () => {
   //testing branch frontend new after deletion
   return (
@@ -29,6 +31,8 @@ const Home = () => {
       <OurProducts />
 
       <TestimonialComponent />
+
+      <FooterComponent />
     </>
   );
 };

@@ -1,7 +1,6 @@
 const categories = {
   id: "randomId",
   categories: [
-    "All Products",
     "Medical Cushions",
     "Bunion Care",
     "Arthritis Treatment",

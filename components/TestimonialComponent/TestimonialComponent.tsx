@@ -6,9 +6,9 @@ import { Icon } from "@iconify/react";
 function TestimonialComponent() {
   return (
     <>
-      <div className={styles.cardTitleDescContainer}>
-        <div className={styles.cardHeaderTitle}>
-          WHAT SOME CUSTOMERS HAVE TO SAY:
+      <div className={styles.testimonialTitleDescContainer}>
+        <div className={styles.testimonialHeaderTitle}>
+          What Some Customers Have To Say:
         </div>
       </div>
       <div className={styles.testimonialContainer}>

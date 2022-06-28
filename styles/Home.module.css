@@ -2,3 +2,37 @@
   width: calc(100vw - 20px);
   height: auto;
 }
+
+.titleDescContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-left: 55px;
+  padding-right: 55px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.headerTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 2.625rem;
+
+  font-weight: 700;
+  color: #4a4a4a;
+}
+.headerDescription {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #69727b;
+  line-height: 1.5;
+  margin-bottom: 50px;
+}

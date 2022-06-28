@@ -5,9 +5,6 @@ function OurProducts() {
   return (
     <>
       <div className={styles.productsSectionContainer}>
-        <div className={styles.cardTitleDescContainer}>
-          <div className={styles.cardHeaderTitle}>Our Products</div>
-        </div>
         <div className={styles.productsContainer}>
           <div className={styles.favouriteProductContainer}>
             <div>

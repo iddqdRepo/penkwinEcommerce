@@ -5,13 +5,6 @@ function CustomerFavouritesComponent() {
   return (
     <>
       <div className={styles.favouritesSectionContainer}>
-        <div className={styles.cardTitleDescContainer}>
-          <div className={styles.cardHeaderTitle}>Customer Favourites.</div>
-          <div className={styles.cardHeaderDescription}>
-            Our established products are made with you in mind, perfectly
-            formulated to fit your needs.
-          </div>
-        </div>
         <div className={styles.productsContainer}>
           <div className={styles.favouriteProductContainer}>
             <div>

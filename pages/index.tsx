@@ -23,13 +23,24 @@ const Home = () => {
       />
 
       <CardComponent />
-
+      <div className={styles.headerTitle}>Customer Favourites.</div>
+      <div className={styles.headerDescription}>
+        Our established products are made with you in mind, perfectly formulated
+        to fit your needs.
+      </div>
       <CustomerFavouritesContainer />
 
       <InfoComponent />
-
+      <div className={styles.titleDescContainer}>
+        <div className={styles.headerTitle}>Featured Products</div>
+      </div>
       <OurProducts />
 
+      <div className={styles.titleDescContainer}>
+        <div className={styles.headerTitle}>
+          What Some Customers Have To Say:
+        </div>
+      </div>
       <TestimonialComponent />
 
       <FooterComponent />

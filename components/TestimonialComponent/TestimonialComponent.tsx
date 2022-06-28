@@ -6,11 +6,6 @@ import { Icon } from "@iconify/react";
 function TestimonialComponent() {
   return (
     <>
-      <div className={styles.testimonialTitleDescContainer}>
-        <div className={styles.testimonialHeaderTitle}>
-          What Some Customers Have To Say:
-        </div>
-      </div>
       <div className={styles.testimonialContainer}>
         <div className={styles.testimonial}>
           <Icon

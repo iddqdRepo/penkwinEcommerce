@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import styles from "./navbarComponent.module.css";
 import categories from "../../dummyData/categories";
+import Link from "next/link";
 
 function NavbarComponent() {
   return (
@@ -30,12 +31,12 @@ function NavbarComponent() {
               {categories["categories"].map((navItem) => {
                 return (
                   <li key={navItem} className={styles.liDropdownItem}>
-                    <a
+                    <Link
                       className={styles.dropdownLink}
-                      href={navItem.replace(/ /g, "")}
+                      href={"/products/" + navItem.replace(/ /g, "")}
                     >
                       {navItem}
-                    </a>
+                    </Link>
                   </li>
                 );
               })}

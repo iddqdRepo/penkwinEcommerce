@@ -2,7 +2,7 @@
 color:#388087;
 */
 .productsSectionContainer {
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
 }
 .cardTitleDescContainer {
   display: flex;
@@ -41,7 +41,7 @@ color:#388087;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   width: 100%;
   padding-left: 70px;
   padding-right: 70px;

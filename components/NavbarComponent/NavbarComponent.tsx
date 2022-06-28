@@ -31,11 +31,8 @@ function NavbarComponent() {
               {categories["categories"].map((navItem) => {
                 return (
                   <li key={navItem} className={styles.liDropdownItem}>
-                    <Link
-                      className={styles.dropdownLink}
-                      href={"/products/" + navItem.replace(/ /g, "")}
-                    >
-                      {navItem}
+                    <Link href={"/products/" + navItem.replace(/ /g, "")}>
+                      <a className={styles.dropdownLink}>{navItem}</a>
                     </Link>
                   </li>
                 );

@@ -1,0 +1,128 @@
+.heroImageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.titleDescContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 30vh;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 100px;
+  padding-left: 70px;
+  padding-right: 70px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.headerTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 2.625rem;
+  font-weight: 700;
+  color: #4a4a4a;
+  line-height: 1.2;
+  padding-bottom: 30px;
+}
+.subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #4a4a4a;
+  padding-bottom: 20px;
+}
+.headerDescription {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #69727b;
+  line-height: 1.5;
+}
+
+/* Info Container Start */
+.infoContainer {
+  display: flex;
+  width: 75%;
+  background-color: #eff4f7;
+  margin: 0 auto;
+  padding: 65px 60px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 1 60%;
+  padding: 0px 72px 0px 12px;
+}
+
+.title {
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 3.3125rem;
+  font-weight: 700;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+
+.infoBullet {
+  padding-bottom: 15px;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #69727b;
+  line-height: 1.5;
+}
+.bold {
+}
+.imageContainer {
+  display: flex;
+  flex: 0 1 40%;
+}
+.imageContainerLeft {
+  display: flex;
+}
+
+.image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: auto;
+  margin: -120px 0px 0px;
+  box-shadow: #000000 0px 30px 70px -20px;
+  border-radius: 10%;
+}
+
+.titleDescContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-left: 55px;
+  padding-right: 55px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.headerTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #4a4a4a;
+}

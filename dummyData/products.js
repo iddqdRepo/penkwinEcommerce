@@ -34,12 +34,12 @@ const products = [
     description: {
       title: "GET INSTANT RELIEF WITH THIS FULLY ADJUSTABLE PILLOW",
       headerText:
-        "This spectacular cushion moulds to your body and your needs quickly, it$apos;s as simple as changing the air inside.",
+        "This spectacular cushion moulds to your body and your needs quickly, it&apos;s as simple as changing the air inside.",
       bullets: [
-        "We only use medical grade materials so you can rest assured that your pillow won$apos;t crack, deflate or otherwise let you down when you need it most.",
+        "We only use medical grade materials so you can rest assured that your pillow won&apos;t crack, deflate or otherwise let you down when you need it most.",
         "Completely hypoallergenic and machine washable you can avoid those embarrassing squeaks and smells and focus on getting you back to being you.",
         "Travel Friendly: the Penkwin pillow folds down nice and small so you can take your pocket-sized pain relief anywhere",
-        "Soft Touch Material: Gentle on sensitive skin, the fabric won$apos;t stick to you or leave ugly marks",
+        "Soft Touch Material: Gentle on sensitive skin, the fabric won&apos;t stick to you or leave ugly marks",
         "100% Satisfaction Guarantee: At Penkwin we believe in helping you get better. If for any reason you are not happy with your purchase, we will replace or refund, no questions asked.",
       ],
       image:
@@ -60,7 +60,7 @@ const products = [
       },
       {
         "Can it be used in the bath or shower?":
-          "Absolutely! unlike foam pillows the Penkwin® Orthopaedic Ring Pillow can be used in the bath or shower. Just leave it to air dry afterwards so it doesn$apos;t stay damp.",
+          "Absolutely! unlike foam pillows the Penkwin® Orthopaedic Ring Pillow can be used in the bath or shower. Just leave it to air dry afterwards so it doesn&apos;t stay damp.",
       },
     ],
 
@@ -114,7 +114,7 @@ const products = [
         "Are you tired of Morton&apos;s neuroma, metatarsal pain or aching in the balls of your feet? Our customers have reported instant pain relief where steroid injections have failed.",
         "Super Effective for relieving pain caused by long-term walking, standing or wearing hard soles. Suitable for all shoe types, athletic shoes, high heels, or work boots",
         "Protect your feet from blisters and abrasion even in flip flops! Beautifully soft and strong material can support you even in your summer footwear.",
-        "Soft Touch Material: This kit is made from super soft and gentle PU and SEBS material so you can be sure it won$apos;t stick to you or leave ugly marks.",
+        "Soft Touch Material: This kit is made from super soft and gentle PU and SEBS material so you can be sure it won&apos;t stick to you or leave ugly marks.",
       ],
       image:
         "https://cdn.shopify.com/s/files/1/1225/6296/files/small_png_beb83b52-2ad2-4158-800e-01c42f510db5.png?v=1569948253",

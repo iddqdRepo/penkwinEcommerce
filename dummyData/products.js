@@ -47,12 +47,18 @@ const products = [
     },
     faq: [
       {
-        "What does it do exactly":
+        "What does it do exactly?":
           "The Penkwin® Cushion helps redistribute your body weight over the ischial tuberosities (aka 'sit bones') to prevent pressure on the perineum or pelvic floor.",
-        "Who is it for ?":
+      },
+      {
+        "Who is it for?":
           "It's perfect for anyone in need of a bit of extra support. It can be especially helpful for those experiencing, Pain from Prolonged Sitting, Bed Sores, Pressure Sores, Decubitus Ulcers, Chronic Pelvic Pain Syndrome (CPPS), Hemorrhoids, Hemorrhoid surgery, Pregnancy, Child Birth, Episiotomy, Rectal Fissures, Rectal Tearing, Rectal Surgery, Perineal Surgery, Prostatitis, Prostatectomy, Prostate Biopsy.",
+      },
+      {
         "I am 250 lbs, am I too heavy?":
           "Not at all! the cushion can comfortably help people up to 300lbs.",
+      },
+      {
         "Can it be used in the bath or shower?":
           "Absolutely! unlike foam pillows the Penkwin® Orthopaedic Ring Pillow can be used in the bath or shower. Just leave it to air dry afterwards so it doesn$apos;t stay damp.",
       },

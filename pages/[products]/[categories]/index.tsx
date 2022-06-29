@@ -1,8 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import NavbarComponent from "../../../components/NavbarComponent/NavbarComponent";
 import OurProducts from "../../../components/OurProductsComponent copy/OurProductsComponent";
-// import data from "../../../dummyData/products";
+import data from "../../../dummyData/products";
 import styles from "./categories.module.css";
+import FooterComponent from "../../../components/FooterComponent copy/FooterComponent";
+
 function Categories() {
+  const product = data[0];
   return (
     <>
       <NavbarComponent />
@@ -67,8 +71,26 @@ function Categories() {
       <OurProducts />
 
       <div className={styles.titleDescContainer}>
-        <div className={styles.headerTitle}>Featured Products</div>
+        <div className={styles.headerTitle}>Quick FAQ</div>
       </div>
+
+      <div className={styles.faqContainer}>
+        <div className={styles.faq}>
+          {product.faq.map((qa) => {
+            console.log("qa =", qa);
+            return (
+              <>
+                <div className={styles.question}>
+                  {Object.entries(qa)[0][0]}
+                </div>
+                <div className={styles.answer}>{Object.entries(qa)[0][1]}</div>
+              </>
+            );
+          })}
+        </div>
+      </div>
+
+      <FooterComponent />
     </>
   );
 }

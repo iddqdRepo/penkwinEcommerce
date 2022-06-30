@@ -5,6 +5,7 @@ import styles from "./navbarComponent.module.css";
 import categories from "../../dummyData/categories";
 import Link from "next/link";
 
+//TODO Change links in navbar, stop it routing all / to categories page
 function NavbarComponent() {
   return (
     <>
@@ -17,7 +18,9 @@ function NavbarComponent() {
           />
         </div>
         <div className={styles.linksContainer}>
-          <div className={styles.navItem}>Home</div>
+          <Link href={"/"}>
+            <a className={styles.navItem}>Home</a>
+          </Link>
           <div className={styles.navItem}>
             Products
             <Icon
@@ -69,7 +72,10 @@ function NavbarComponent() {
           </div>
 
           <div className={styles.navItem}>About Us</div>
-          <div className={styles.navItem}>Contact</div>
+          {/* <div className={styles.navItem}>Contact</div> */}
+          <Link href={"/contact"}>
+            <a className={styles.navItem}>Contact</a>
+          </Link>
         </div>
 
         <div className={styles.iconContainer}>

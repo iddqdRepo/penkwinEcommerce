@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
+import dbConnect from "../utils/dbConnect.js";
 import styles from "../styles/Home.module.css";
 import CardComponent from "../components/CardComponent/CardComponent";
 import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
@@ -56,3 +56,8 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+  dbConnect();
+  return { props: {} };
+}

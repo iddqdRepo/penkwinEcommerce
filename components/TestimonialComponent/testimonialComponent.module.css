@@ -1,0 +1,79 @@
+/* 
+color:#388087;
+*/
+
+.testimonialTitleDescContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-left: 55px;
+  padding-right: 55px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.testimonialHeaderTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 2.625rem;
+  font-weight: 700;
+  color: #4a4a4a;
+}
+
+.testimonialContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.testimonial {
+  display: flex;
+  max-width: 300px;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.icon {
+  margin: 0 auto;
+}
+
+.image {
+  max-height: auto;
+  width: 100%;
+}
+.description {
+  color: #69727b;
+  font-style: italic;
+  text-align: center;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  margin-top: 1.5rem;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 19.75px;
+  font-weight: 400;
+}
+
+.name {
+  color: #3d4246;
+  text-align: center;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* 
+box-shadow: 0 30px 70px -20px #00000080, 0 53px 50px -50px;
+ */

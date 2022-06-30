@@ -1,0 +1,139 @@
+/* Colour #388087 
+    font-family: Merriweather,Arial,Helvetica,sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 18px;
+*/
+
+.navbarContainer {
+  display: flex;
+  background-color: #388087;
+  flex-direction: rows;
+  justify-content: center;
+}
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImage {
+  max-height: 70%;
+  width: auto;
+}
+/*^ --------------------------------------------------------- */
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+}
+.dropdownLink {
+  color: black;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1rem;
+  padding: 18px;
+  /* padding-bottom: 8px; */
+  /* border: 1px solid #388087; */
+}
+.navItem {
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 18px;
+  color: white;
+  padding: 10px;
+  list-style: none;
+}
+
+.navItem:hover {
+  background-color: white;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 18px;
+  color: black;
+  padding: 10px;
+  list-style: none;
+}
+.navItem:hover .ulDropdownList {
+  display: flex;
+  flex-direction: column;
+}
+.ulDropdownList {
+  position: absolute;
+  margin-left: -10px;
+  margin-top: 10px;
+  z-index: 99999999;
+  display: none;
+}
+.liDropdownItem {
+  background: white;
+  list-style: none;
+}
+.dropdownLink {
+  display: block !important;
+}
+.liDropdownItem:hover {
+  background-color: #f6f6f2;
+}
+
+/*^ ------------------------------------------------------------------ */
+
+.chevron {
+  padding-left: 5px;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  padding-right: 25px;
+}
+/* --------------------------------------------------------------------------- */
+/* .navContainerDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: green;
+  list-style: none;
+}
+
+.navLinksContainer {
+  display: flex;
+  flex-direction: row;
+}
+.dropdownLink {
+  color: white;
+  font-size: 20px;
+  padding: 15px;
+}
+
+.navItemDiv:hover {
+  background: #555;
+}
+.navItemDiv:hover .ulDropdownList {
+  display: flex;
+  flex-direction: column;
+}
+.ulDropdownList {
+  position: absolute;
+  display: none;
+}
+.liDropdownItem {
+  background: #555;
+  list-style: none;
+}
+.dropdownLink {
+  display: block !important;
+}
+.liDropdownItem:hover {
+  background: #666;
+} */

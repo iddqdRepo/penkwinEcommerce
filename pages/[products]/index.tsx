@@ -1,5 +1,5 @@
 function Products() {
-  return <>This is the all categories area</>;
+  return <>This is the all products area</>;
 }
 
 export default Products;

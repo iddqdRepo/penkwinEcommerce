@@ -47,7 +47,8 @@ const products = [
     },
     faq: [
       {
-        "What does it do exactly?":
+        question: "What does it do exactly?",
+        answer:
           "The Penkwin® Cushion helps redistribute your body weight over the ischial tuberosities (aka 'sit bones') to prevent pressure on the perineum or pelvic floor.",
       },
       {

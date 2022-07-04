@@ -48,15 +48,14 @@ const productSchema = new mongoose.Schema(
     category: { type: [], required: true },
     sale: {
       onSale: { type: "Boolean", default: false },
-      salePrice: String,
+      salePrice: { type: "String", default: false },
     },
     featured: { type: "Boolean", default: false },
-    rating: { type: "Number" },
     reviews: [reviewSchema],
   },
   {
     timestamps: true,
   }
 );
-export default mongoose.models.productSchema ||
-  mongoose.model("product", productSchema);
+export default mongoose.models.Products ||
+  mongoose.model("Products", productSchema);

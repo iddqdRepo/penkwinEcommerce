@@ -15,7 +15,6 @@ function NavbarComponent() {
       const data = await res.json();
       const tempCategories = data.map(
         (item: { _id: String; category: String }) => {
-          console.log("Item is = ", item);
           return item.category;
         }
       );
@@ -25,7 +24,6 @@ function NavbarComponent() {
     getCategories();
   }, []);
 
-  console.log("navbar categories = ", categories);
   return (
     <>
       <div className={styles.navbarContainer}>

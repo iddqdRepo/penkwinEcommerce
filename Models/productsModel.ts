@@ -45,7 +45,7 @@ const productSchema = new mongoose.Schema(
       image: { type: "String", required: true },
     },
     faq: [faqSchema],
-    category: { type: [], required: true },
+    productCategory: { type: [], required: true },
     sale: {
       onSale: { type: "Boolean", default: false },
       salePrice: { type: "String", default: false },

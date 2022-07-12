@@ -4,7 +4,7 @@ import CardComponent from "../components/CardComponent/CardComponent";
 import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
 import CustomerFavouritesContainer from "../components/CustomerFavouritesComponent/CustomerFavouritesComponent";
 import InfoComponent from "../components/InfoComponent/InfoComponent";
-import OurProducts from "../components/OurProductsComponent/OurProductsComponent";
+// import OurProducts from "../components/OurProductsComponent/OurProductsComponent";
 import TestimonialComponent from "../components/TestimonialComponent/TestimonialComponent";
 import FooterComponent from "../components/FooterComponent/FooterComponent";
 import TitleHeaderComponent from "../components/TitleHeaderComponent/TitleHeaderComponent";
@@ -40,7 +40,7 @@ const Home = () => {
       <TitleHeaderComponent title={"Featured Products"} description={""} />
       <div className={styles.spacerFifty}></div>
 
-      <OurProducts />
+      {/* <OurProducts /> */}
       <div className={styles.spacerHundred}></div>
 
       <TitleHeaderComponent

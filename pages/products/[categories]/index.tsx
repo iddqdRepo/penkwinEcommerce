@@ -5,59 +5,66 @@ import styles from "./categories.module.css";
 import FooterComponent from "../../../components/FooterComponent/FooterComponent";
 import dbConnect from "../../../utils/dbConnect";
 import categoryModel from "../../../Models/categoryModel";
+import { Key } from "react";
+import productsModel from "../../../Models/productsModel";
+import { stringifyIdsAndDates } from "../../../utils/stringifyIdsAndDates";
 
-function Categories({ data }) {
-  console.log(data);
+interface dataProps {
+  data: {
+    _id?: number;
+    category: string;
+    slug: string;
+    heroImage: string;
+    title: string;
+    subTitle: string;
+    description: string;
+    cardTitle: string;
+    cardImage: string;
+    cardBullets: [];
+    _v?: number;
+  }[];
+  productsData: [];
+}
+
+function Categories(props: dataProps) {
+  //console.log("props = ", props);
+  const data: dataProps["data"] = props.data;
+  const products = props.productsData;
+  console.log("products = ", products);
+
+  const productCategory = data[0];
   return (
     <>
       <NavbarComponent />
       <div className={styles.heroImageContainer}>
-        <img src="/peopleSitting.png" alt="" />
+        <img src={productCategory.heroImage} alt="" />
       </div>
       <div className={styles.titleDescContainer}>
-        <div className={styles.headerTitle}>Penkwin® Medical Cushions</div>
-        <div className={styles.subtitle}>
-          Pain Relief Designed with You in Mind
-        </div>
+        <div className={styles.headerTitle}>{productCategory.title}</div>
+        <div className={styles.subtitle}>{productCategory.subTitle}</div>
         <div className={styles.headerDescription}>
-          The Penkwin® Orthopaedic Ring Pillow Dramatically Reduces Pain and
-          Helps You to Rest Easy. Improve your quality of life with a medical
-          pillow designed to reduce pressure and remove discomfort from the part
-          of your body where you feel it most
+          {productCategory.description}
         </div>
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <div className={styles.title}>COMFORT, TAILORED TO YOU.</div>
+          <div className={styles.title}>{productCategory.cardTitle}</div>
           <div className={styles.description}>
             <ul>
-              <li className={styles.infoBullet}>
-                Get instant relief with this{" "}
-                <span className={styles.bold}>fully adjustable pillow</span>{" "}
-                which moulds to your body and your needs quickly, it&apos;s as
-                simple as changing the air inside.
-              </li>
-              <li className={styles.infoBullet}>
-                Designed to provide gentle support everywhere whether in the
-                car, shower, sofa or wheelchair.
-              </li>
-              <li className={styles.infoBullet}>
-                We only use medical grade materials so you can rest assured that
-                your pillow won&apos;t crack, deflate or otherwise let you down
-                when you need it most.
-              </li>
-              <li className={styles.infoBullet}>
-                Safely hypoallergenic and washable you can avoid those
-                embarrassing squeaks and smells and focus on getting you back to
-                being you.
-              </li>
+              {productCategory.cardBullets.map((bullet: String) => {
+                return (
+                  <li key={bullet as Key} className={styles.infoBullet}>
+                    {bullet}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
         <div className={styles.imageContainer}>
           <img
             className={styles.image}
-            src="https://cdn.shopify.com/s/files/1/1225/6296/files/Woman_sitting_png.png?v=1569944045"
+            src={productCategory.cardImage}
             alt=""
           />
         </div>
@@ -65,65 +72,46 @@ function Categories({ data }) {
       <div className={styles.titleDescContainer}>
         <div className={styles.headerTitle}>Featured Products</div>
       </div>
-      <OurProducts />
-      <div className={styles.titleDescContainer}>
-        <div className={styles.headerTitle}>Quick FAQ</div>
-      </div>
-      {/* <div className={styles.faqContainer}>
-        <div className={styles.faq}>
-          {product.faq.map((qa) => {
-            console.log("qa =", qa);
-            return (
-              <>
-                <div className={styles.question}>
-                  {Object.entries(qa)[0][0]}
-                </div>
-                <div className={styles.answer}>{Object.entries(qa)[0][1]}</div>
-              </>
-            );
-          })}
-        </div>
-      </div> */}
+      <OurProducts products={products} />
+
       <FooterComponent />
     </>
   );
 }
 export async function getStaticPaths() {
-  console.log("CALLING getStaticPaths ");
+  //console.log("CALLING getStaticPaths ");
   dbConnect();
   const data = await categoryModel.find();
-  const paths = data.map((obj) => {
+  const paths = data.map((obj: { slug: String }) => {
     return {
-      params: { categories: obj.category.toString().replace(/ /g, "") },
+      params: { categories: obj.slug.toString() },
     };
   });
 
   return {
-    paths, //paths which is the same as paths:paths
-    fallback: false, // false = if a user tries to visit a route that doesnt exist, it shows a 404 page
+    paths,
+    fallback: false,
   };
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context: { params: { categories: any } }) {
+  const category = context.params.categories;
   dbConnect();
-  const data = await categoryModel.find();
-  const categories = data.map((doc) => {
-    const category = doc.toObject();
+  // Find and return the page to be rendered (in this case, with the correct slug that we used to build the paths)
+  const categoryData = await categoryModel.find({ slug: category }).lean();
+  const productsData = await productsModel
+    .find({
+      productCategory: { $elemMatch: { $eq: category } },
+    })
+    .lean();
 
-    //change the dates etc to strings
-    category._id = category._id.toString();
-    if (category.createdAt) {
-      category.createdAt = category.createdAt.toString();
-    }
-    if (category.updatedAt) {
-      category.updatedAt = category.updatedAt.toString();
-    }
-    return category;
-  });
+  stringifyIdsAndDates(categoryData);
+  stringifyIdsAndDates(productsData);
 
   return {
     props: {
-      categories,
+      data: categoryData,
+      productsData: productsData,
     },
     revalidate: 10, // In seconds
   };

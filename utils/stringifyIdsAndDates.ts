@@ -18,7 +18,7 @@ export function stringifyIdsAndDates(dataStructure: any) {
       }
       //if key is an array, loop through and stringify the contents
       if (Array.isArray(dataStructure[key])) {
-        dataStructure[key].map((item) => {
+        dataStructure[key].map((item: any) => {
           return stringifyIdsAndDates(item);
         });
       }

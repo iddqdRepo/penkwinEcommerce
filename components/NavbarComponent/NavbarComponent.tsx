@@ -75,19 +75,19 @@ function NavbarComponent() {
             />
             <ul className={styles.ulDropdownList}>
               <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  PC (Polycarbonate)
-                </a>
+                <Link href="/polycarbonates">
+                  <a className={styles.dropdownLink}>PC (Polycarbonates)</a>
+                </Link>
               </li>
               <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  PU (Polyurethanes)
-                </a>
+                <Link href="/polyurethane">
+                  <a className={styles.dropdownLink}>PU (Polyurethanes)</a>
+                </Link>
               </li>
               <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  SEBS
-                </a>
+                <Link href="/sebs">
+                  <a className={styles.dropdownLink}>SEBS</a>
+                </Link>
               </li>
             </ul>
           </div>

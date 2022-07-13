@@ -9,7 +9,7 @@ function InfoComponent({
   imageSide,
 }: {
   title: string;
-  desc: string | [];
+  desc: string | string[];
   image: string;
   imageSide: string;
 }) {

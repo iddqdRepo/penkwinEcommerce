@@ -5,10 +5,9 @@ import styles from "./categories.module.css";
 import FooterComponent from "../../../components/FooterComponent/FooterComponent";
 import dbConnect from "../../../utils/dbConnect";
 import categoryModel from "../../../Models/categoryModel";
-import { Key } from "react";
 import productsModel from "../../../Models/productsModel";
 import { stringifyIdsAndDates } from "../../../utils/stringifyIdsAndDates";
-
+import InfoComponant from "../../../components/InfoComponent/InfoComponent";
 interface dataProps {
   data: {
     _id?: number;
@@ -27,7 +26,6 @@ interface dataProps {
 }
 
 function Categories(props: dataProps) {
-  //console.log("props = ", props);
   const data: dataProps["data"] = props.data;
   const products = props.productsData;
   console.log("products = ", products);
@@ -46,29 +44,13 @@ function Categories(props: dataProps) {
           {productCategory.description}
         </div>
       </div>
-      <div className={styles.infoContainer}>
-        <div className={styles.textContainer}>
-          <div className={styles.title}>{productCategory.cardTitle}</div>
-          <div className={styles.description}>
-            <ul>
-              {productCategory.cardBullets.map((bullet: String) => {
-                return (
-                  <li key={bullet as Key} className={styles.infoBullet}>
-                    {bullet}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-        <div className={styles.imageContainer}>
-          <img
-            className={styles.image}
-            src={productCategory.cardImage}
-            alt=""
-          />
-        </div>
-      </div>
+      <InfoComponant
+        title={productCategory.cardTitle}
+        desc={productCategory.cardBullets}
+        image={productCategory.cardImage}
+        imageSide="right"
+      />
+
       <div className={styles.titleDescContainer}>
         <div className={styles.headerTitle}>Featured Products</div>
       </div>

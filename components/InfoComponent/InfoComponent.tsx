@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { Key } from "react";
 import styles from "./infoCompoment.module.css";
 
 function InfoComponent({
@@ -8,7 +9,7 @@ function InfoComponent({
   imageSide,
 }: {
   title: string;
-  desc: string;
+  desc: string | [];
   image: string;
   imageSide: string;
 }) {
@@ -16,7 +17,17 @@ function InfoComponent({
     <div className={styles.infoContainer}>
       <div className={styles.textContainer}>
         <div className={styles.title}>{title}</div>
-        <div className={styles.description}>{desc}</div>
+        {Array.isArray(desc) ? (
+          desc.map((bullet) => {
+            return (
+              <li key={bullet as Key} className={styles.infoBullet}>
+                {bullet}
+              </li>
+            );
+          })
+        ) : (
+          <div className={styles.description}>{desc}</div>
+        )}
       </div>
       <div className={styles.imageContainer}>
         <img className={styles.image} src={image} alt="" />
@@ -29,7 +40,17 @@ function InfoComponent({
       </div>
       <div className={styles.textContainerLeft}>
         <div className={styles.title}>{title}</div>
-        <div className={styles.description}>{desc}</div>
+        {Array.isArray(desc) ? (
+          desc.map((bullet) => {
+            return (
+              <li key={bullet as Key} className={styles.infoBullet}>
+                {bullet}
+              </li>
+            );
+          })
+        ) : (
+          <div className={styles.description}>{desc}</div>
+        )}
       </div>
     </div>
   );

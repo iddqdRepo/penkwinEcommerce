@@ -2,11 +2,28 @@
 
 import { Icon } from "@iconify/react";
 import styles from "./navbarComponent.module.css";
-import categories from "../../dummyData/categories";
 import Link from "next/link";
+import { Key, useEffect, useState } from "react";
 
-//TODO Change links in navbar, stop it routing all / to categories page
+//TODO Fix key string nonsense below
 function NavbarComponent() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const res = await fetch("http://localhost:3000/api/categories");
+      const data = await res.json();
+      const tempCategories = data.map(
+        (item: { _id: String; category: String }) => {
+          return item.category;
+        }
+      );
+      setCategories(tempCategories);
+    };
+
+    getCategories();
+  }, []);
+
   return (
     <>
       <div className={styles.navbarContainer}>
@@ -30,17 +47,21 @@ function NavbarComponent() {
               height="15"
               inline={true}
             />
-            <ul className={styles.ulDropdownList}>
-              {categories["categories"].map((navItem) => {
-                return (
-                  <li key={navItem} className={styles.liDropdownItem}>
-                    <Link href={"/products/" + navItem.replace(/ /g, "")}>
-                      <a className={styles.dropdownLink}>{navItem}</a>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            {categories ? (
+              <ul className={styles.ulDropdownList}>
+                {categories.map((navItem: String) => {
+                  return (
+                    <li key={navItem as Key} className={styles.liDropdownItem}>
+                      <Link href={"/products/" + navItem.replace(/ /g, "")}>
+                        <a className={styles.dropdownLink}>{navItem}</a>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <></>
+            )}
           </div>
           <div className={styles.navItem}>Instructions</div>
           <div className={styles.navItem}>

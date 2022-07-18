@@ -1,26 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import NavbarComponent from "../../components/NavbarComponent/NavbarComponent";
-import styles from "../products/[categories]/categories.module.css";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import InfoComponant from "../../components/InfoComponent/InfoComponent";
-
+import HeroImageComponent from "../../components/HeroImageComponent/HeroImageComponent";
+import TitleHeaderComponent from "../../components/TitleHeaderComponent/TitleHeaderComponent";
 function Polycarbonates() {
   return (
     <>
       <NavbarComponent />
-      <div className={styles.heroImageContainer}>
-        <img
-          src="https://cdn.shopify.com/s/files/1/1225/6296/files/Banner_1_1280x267.png?v=1569947692"
-          alt=""
-        />
-      </div>
-      <div className={styles.titleDescContainer}>
-        <div className={styles.headerTitle}>What are Polycarbonates (PC)?</div>
-        <div className={styles.subtitle}>
-          Long story short: Polycarbonates are one of the most commonly used and
-          widely tested materials in the medical device industry.
-        </div>
-      </div>
+      <HeroImageComponent imageSource="https://cdn.shopify.com/s/files/1/1225/6296/files/Banner_1_1280x267.png?v=1569947692" />
+
+      <TitleHeaderComponent
+        title="What are Polycarbonates (PC)?"
+        subtitle="Long story short: Polycarbonates are one of the most commonly used and
+          widely tested materials in the medical device industry."
+        description=""
+      />
+
       <InfoComponant
         title={"Quick Summary:"}
         desc={[

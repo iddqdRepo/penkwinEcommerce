@@ -1,26 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import NavbarComponent from "../../components/NavbarComponent/NavbarComponent";
-import styles from "../products/[categories]/categories.module.css";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import InfoComponant from "../../components/InfoComponent/InfoComponent";
+import TitleHeaderComponent from "../../components/TitleHeaderComponent/TitleHeaderComponent";
+import HeroImageComponent from "../../components/HeroImageComponent/HeroImageComponent";
 
 function Polyurethane() {
   return (
     <>
       <NavbarComponent />
-      <div className={styles.heroImageContainer}>
-        <img
-          src="https://cdn.shopify.com/s/files/1/1225/6296/files/Banner_1_1280x267.png?v=1569947692"
-          alt=""
-        />
-      </div>
-      <div className={styles.titleDescContainer}>
-        <div className={styles.headerTitle}>What is Polyurethane (PU)?</div>
-        <div className={styles.subtitle}>
-          From catheters to implants, Polyurethane is used in thousands of
-          medical devices all over the world.{" "}
-        </div>
-      </div>
+      <HeroImageComponent imageSource="https://cdn.shopify.com/s/files/1/1225/6296/files/Banner_1_1280x267.png?v=1569947692" />
+
+      <TitleHeaderComponent
+        title="What is Polyurethane (PU)?"
+        subtitle="From catheters to implants, Polyurethane is used in thousands of
+        medical devices all over the world."
+        description=""
+      />
+
       <InfoComponant
         title={"Quick Summary:"}
         desc={[

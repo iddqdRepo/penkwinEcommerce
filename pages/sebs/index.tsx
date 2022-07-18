@@ -1,28 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import NavbarComponent from "../../components/NavbarComponent/NavbarComponent";
-import styles from "../products/[categories]/categories.module.css";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import InfoComponant from "../../components/InfoComponent/InfoComponent";
+import TitleHeaderComponent from "../../components/TitleHeaderComponent/TitleHeaderComponent";
+import HeroImageComponent from "../../components/HeroImageComponent/HeroImageComponent";
 
 function Sebs() {
   return (
     <>
       <NavbarComponent />
-      <div className={styles.heroImageContainer}>
-        <img
-          src="https://cdn.shopify.com/s/files/1/1225/6296/files/Banner_1_1280x267.png?v=1569947692"
-          alt=""
-        />
-      </div>
-      <div className={styles.titleDescContainer}>
-        <div className={styles.headerTitle}>
-          What is Styrene Ethylene Butylene Styrene (SEBS)?
-        </div>
-        <div className={styles.subtitle}>
-          SEBS is used in everything from Toothbrushes and Mouth Guards to
-          Nappies and Teethers.
-        </div>
-      </div>
+      <HeroImageComponent imageSource="https://cdn.shopify.com/s/files/1/1225/6296/files/Banner_1_1280x267.png?v=1569947692" />
+
+      <TitleHeaderComponent
+        title="What is Styrene Ethylene Butylene Styrene (SEBS)?"
+        subtitle="SEBS is used in everything from Toothbrushes and Mouth Guards to
+        Nappies and Teethers."
+        description=""
+      />
+
       <InfoComponant
         title={"Quick Summary:"}
         desc={[

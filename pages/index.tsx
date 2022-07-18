@@ -12,23 +12,21 @@ import dbConnect from "../utils/dbConnect.js";
 import productsModel from "../Models/productsModel";
 import { stringifyIdsAndDates } from "../utils/stringifyIdsAndDates";
 // import categoryModel from "./../Models/categoryModel";
+import HeroImageComponent from "../components/HeroImageComponent/HeroImageComponent";
 const Home = ({ products }: { products: any }) => {
   console.log("products = ", products);
 
   return (
     <>
       <NavbarComponent />
-      <img
-        className={styles.heroBanner}
-        src="/heroBannerImage.png"
-        alt=""
-        // style={{ boxShadow: "#000000 0px 30px 70px -20p" }}
-      />
+      <HeroImageComponent imageSource="/heroBannerImage.png" />
+
       <CardComponent />
       <div className={styles.spacerHundred}></div>
 
       <TitleHeaderComponent
-        title={"Customer Favourites"}
+        title="Customer Favourites"
+        subtitle=""
         description={
           "Our established products are made with you in mind, perfectly formulated to fit your needs."
         }

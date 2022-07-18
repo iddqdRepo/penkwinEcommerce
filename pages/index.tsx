@@ -4,13 +4,17 @@ import CardComponent from "../components/CardComponent/CardComponent";
 import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
 import CustomerFavouritesContainer from "../components/CustomerFavouritesComponent/CustomerFavouritesComponent";
 import InfoComponent from "../components/InfoComponent/InfoComponent";
-// import OurProducts from "../components/OurProductsComponent/OurProductsComponent";
+import OurProducts from "../components/OurProductsComponent/OurProductsComponent";
 import TestimonialComponent from "../components/TestimonialComponent/TestimonialComponent";
 import FooterComponent from "../components/FooterComponent/FooterComponent";
 import TitleHeaderComponent from "../components/TitleHeaderComponent/TitleHeaderComponent";
-// import dbConnect from "../utils/dbConnect.js";
+import dbConnect from "../utils/dbConnect.js";
+import productsModel from "../Models/productsModel";
+import { stringifyIdsAndDates } from "../utils/stringifyIdsAndDates";
 // import categoryModel from "./../Models/categoryModel";
-const Home = () => {
+const Home = ({ products }: { products: any }) => {
+  console.log("products = ", products);
+
   return (
     <>
       <NavbarComponent />
@@ -55,7 +59,7 @@ const Home = () => {
       <TitleHeaderComponent title={"Featured Products"} description={""} />
       <div className={styles.spacerFifty}></div>
 
-      {/* <OurProducts /> */}
+      <OurProducts products={products} />
       <div className={styles.spacerHundred}></div>
 
       <TitleHeaderComponent
@@ -73,12 +77,9 @@ const Home = () => {
 
 export default Home;
 
-// export async function getStaticProps() {
-//   dbConnect();
-//   const allCategoriesFetch = await categoryModel.find();
-//   const categories = allCategoriesFetch.map((item) => {
-//     return item.category;
-//   });
-
-//   return { props: { categories } };
-// }
+export async function getStaticProps() {
+  dbConnect();
+  const allProductsData = await productsModel.find({ featured: true }).lean();
+  stringifyIdsAndDates(allProductsData);
+  return { props: { products: allProductsData } };
+}

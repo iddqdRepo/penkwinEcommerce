@@ -63,7 +63,9 @@ function NavbarComponent() {
               <></>
             )}
           </div>
-          <div className={styles.navItem}>Instructions</div>
+          <Link href={"/instructions"}>
+            <a className={styles.navItem}>Instructions</a>
+          </Link>
           <div className={styles.navItem}>
             Materials
             <Icon
@@ -92,11 +94,13 @@ function NavbarComponent() {
             </ul>
           </div>
 
-          <div className={styles.navItem}>About Us</div>
-          {/* <div className={styles.navItem}>Contact</div> */}
-          <Link href={"/contact"}>
-            <a className={styles.navItem}>Contact</a>
+          <Link href={"/about"}>
+            <a className={styles.navItem}>About Us</a>
           </Link>
+          {/* <div className={styles.navItem}>Contact</div> */}
+          {/* <Link href={"/contact"}>
+            <a className={styles.navItem}>Contact</a>
+          </Link> */}
         </div>
 
         <div className={styles.iconContainer}>

@@ -10,7 +10,6 @@ interface ProductsInterface {
     [key: string]: any;
   }[];
 }
-
 function OurProducts({
   products,
 }: {
@@ -58,7 +57,9 @@ function OurProducts({
                     <img className={styles.image} src={item.images[0]} alt="" />
                   </div>
                   <div className={styles.title}>{item.title}</div>
-                  <div className={styles.price}>£{item.price}</div>
+                  <div className={styles.price}>
+                    £{item.variant.variants[0].price}
+                  </div>
                   <button className={styles.learnMoreButton}>Learn More</button>
                 </div>
               );

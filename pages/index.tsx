@@ -54,7 +54,11 @@ const Home = ({ products }: { products: any }) => {
       />
       <div className={styles.spacerHundred}></div>
 
-      <TitleHeaderComponent title={"Featured Products"} description={""} />
+      <TitleHeaderComponent
+        title={"Featured Products"}
+        subtitle=""
+        description={""}
+      />
       <div className={styles.spacerFifty}></div>
 
       <OurProducts products={products} />
@@ -62,6 +66,7 @@ const Home = ({ products }: { products: any }) => {
 
       <TitleHeaderComponent
         title={"What Some Customers Have To Say"}
+        subtitle=""
         description={""}
       />
 

@@ -102,6 +102,7 @@ color:#388087;
   color: white;
   text-decoration-line: none;
   border: 0;
+  cursor: pointer;
 }
 .disabledButton {
   background-color: #ccc;

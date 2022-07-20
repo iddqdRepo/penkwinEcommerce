@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { Key } from "react";
 import styles from "./ourProductsComponent.module.css";
-
 interface ProductsInterface {
   Products: {
     images: string;
@@ -18,7 +18,7 @@ function OurProducts({
   const checkAllVariantsOutOfStock = (variantProducts: any) => {
     let count = 0;
     variantProducts.variant.variants.forEach((item: { [key: string]: any }) => {
-      if (!item.quantity) {
+      if (item.quantity !== 0) {
         count++;
       }
     });
@@ -74,10 +74,13 @@ function OurProducts({
             <div className={styles.price}>
               £{item.variant.variants[0].price}
             </div>
-            <button className={styles.learnMoreButton}>Learn More</button>
+            <Link
+              href={`/${item.productCategory[0]}/${item.variant.variants[0].title}`}
+            >
+              <button className={styles.learnMoreButton}>Learn More</button>
+            </Link>
           </div>
         )}
-        ;
       </>
     );
   }
@@ -86,40 +89,35 @@ function OurProducts({
     <>
       <div className={styles.productsSectionContainer}>
         <div className={styles.productsContainer}>
-          {products ? (
-            products.map((item) => {
-              return item.variant.multiple ? (
-                //TODO If all the variants have a qty of 0, then .disabledFavouriteProductContainer
-                <MultipleVariants
-                  key={(item.title + item.price) as Key}
-                  item={item}
-                />
-              ) : item.variant.variants[0].quantity ? (
-                <OutOfStock
-                  image={item.images[0]}
-                  title={item.title}
-                  price={item.variant.variants[0].price}
-                  setKey={item.title + item.price}
-                />
-              ) : (
-                <div
-                  key={(item.title + item.price) as Key}
-                  className={styles.favouriteProductContainer}
-                >
-                  <div>
-                    <img className={styles.image} src={item.images[0]} alt="" />
-                  </div>
-                  <div className={styles.title}>{item.title}</div>
-                  <div className={styles.price}>
-                    £{item.variant.variants[0].price}
-                  </div>
-                  <button className={styles.learnMoreButton}>Learn More</button>
+          {products.map((item) => {
+            return item.variant.multiple ? (
+              <MultipleVariants
+                key={(item.title + item.price) as Key}
+                item={item}
+              />
+            ) : item.variant.variants[0].quantity ? (
+              <OutOfStock
+                image={item.images[0]}
+                title={item.title}
+                price={item.variant.variants[0].price}
+                setKey={item.title + item.price}
+              />
+            ) : (
+              <div
+                key={(item.title + item.price) as Key}
+                className={styles.favouriteProductContainer}
+              >
+                <div>
+                  <img className={styles.image} src={item.images[0]} alt="" />
                 </div>
-              );
-            })
-          ) : (
-            <div> No products available </div>
-          )}
+                <div className={styles.title}>{item.title}</div>
+                <div className={styles.price}>
+                  £{item.variant.variants[0].price}
+                </div>
+                <button className={styles.learnMoreButton}>Learn More</button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

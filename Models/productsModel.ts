@@ -47,6 +47,7 @@ const productSchema = new mongoose.Schema(
     },
     faq: [faqSchema],
     productCategory: { type: [], required: true },
+    slug: { type: String, required: true },
     sale: {
       onSale: { type: "Boolean", default: false },
       salePrice: { type: "String", default: false },

@@ -74,9 +74,7 @@ function OurProducts({
             <div className={styles.price}>
               £{item.variant.variants[0].price}
             </div>
-            <Link
-              href={`/${item.productCategory[0]}/${item.variant.variants[0].title}`}
-            >
+            <Link href={`/products/${item.productCategory[0]}/${item.slug}`}>
               <button className={styles.learnMoreButton}>Learn More</button>
             </Link>
           </div>

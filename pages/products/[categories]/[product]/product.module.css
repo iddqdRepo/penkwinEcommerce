@@ -1,0 +1,163 @@
+.productView {
+  display: flex;
+  justify-content: center;
+  /* width: 60%; */
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 1200px;
+  background: linear-gradient(180deg, #fefefe 0, #f7f7f7 100%);
+  margin-bottom: 200px;
+}
+
+.leftViewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  border-right: 0.0625rem solid #d8d8d8;
+}
+
+.leftViewMainImage {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.smallImagePreviewContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.smallImagePreview {
+  max-width: 80px;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.inactiveImagePreview:hover {
+  opacity: 0.6;
+}
+
+.activeImagePreview {
+  border: 1px solid black;
+  cursor: auto;
+}
+
+.rightViewContainer {
+  width: 50%;
+  padding-left: 30px;
+}
+
+.rightViewtopContainer {
+}
+
+.rightViewtitle {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #4a4a4a;
+  line-height: 1.2;
+}
+
+.rightViewQty {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 22.5px;
+  font-weight: 700;
+  color: #69727b;
+}
+
+.rightReviewContainer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+.rightViewStars {
+}
+
+.rightViewReviewCount {
+  padding-left: 10px;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.rightViewTaxIncluded {
+  font-size: 1.1rem;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: #69727b;
+  padding-top: 5px;
+}
+
+.variantQuantitySizeContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.variantQuantityLeft {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 90%;
+  margin-right: 10px;
+}
+
+.variantQuantityLeft,
+.sizeQuantityRight label {
+  color: #3d4246;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.selectSize {
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px;
+  border-bottom-color: rgb(148, 148, 148);
+  border-bottom-style: solid;
+  border-bottom-width: 1.33333px;
+  padding: 8px 28px 8px 15px;
+  line-height: 1.2;
+  border: 1px solid #949494;
+}
+
+.sizeQuantityRight {
+  display: flex;
+  flex-direction: column;
+  max-width: 20%;
+  margin-right: 10px;
+}
+
+.buyButtonContainer {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.addToCart {
+  background-color: white;
+  color: #295e63;
+  border: 1px solid #9abec1;
+  width: 98%;
+  padding-left: 5px;
+  padding-right: 5px;
+  white-space: normal;
+  margin-top: 0;
+  min-height: 44px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}

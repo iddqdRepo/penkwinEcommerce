@@ -1,21 +1,25 @@
 import styles from "./titleHeaderComponent..module.css";
 
-function TitleHeaderComponent({
+export function TitleHeaderComponent({
   title,
+  subtitle,
   description,
 }: {
-  title: String;
-  description: String;
+  title: string;
+  subtitle: string;
+  description: string;
 }) {
   return (
     <>
-      <div className={styles.headerTitle}>{title}</div>
-
-      {description ? (
-        <div className={styles.headerDescription}>{description}</div>
-      ) : (
-        <></>
-      )}
+      <div className={styles.titleDescContainer}>
+        <div className={styles.headerTitle}>{title}</div>
+        {subtitle ? <div className={styles.subtitle}>{subtitle}</div> : <></>}
+        {description ? (
+          <div className={styles.headerDescription}>{description}</div>
+        ) : (
+          <></>
+        )}
+      </div>
     </>
   );
 }

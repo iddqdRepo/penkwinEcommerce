@@ -41,7 +41,14 @@
   color: #69727b;
   line-height: 1.5;
 }
-
+.infoBullet {
+  padding-bottom: 15px;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #69727b;
+  line-height: 1.5;
+}
 .imageContainer {
   display: flex;
   flex: 0 1 40%;

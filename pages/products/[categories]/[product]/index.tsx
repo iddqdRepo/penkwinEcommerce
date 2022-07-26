@@ -4,35 +4,85 @@ import dbConnect from "../../../../utils/dbConnect";
 import productsModel from "../../../../Models/productsModel";
 import { stringifyIdsAndDates } from "../../../../utils/stringifyIdsAndDates";
 import { Icon } from "@iconify/react";
-import { Key } from "react";
+import { useRef, useState, Key, useEffect } from "react";
 
 function Product({ productsData }: { productsData: any }) {
+  const [previewImage, setPreviewImage] = useState(productsData[0].images[0]);
+
+  //TODO - useRef typescript, then
+  const refs = useRef<HTMLImageElement[]>([]);
+
+  useEffect(() => {
+    //* set the initial classname for the preview images
+    refs.current.map((item, index) => {
+      if (index === 0) {
+        return (item.className = [
+          styles.smallImagePreview,
+          styles.activeImagePreview,
+        ].join(" "));
+      }
+      return (item.className = [
+        styles.smallImagePreview,
+        styles.inactiveImagePreview,
+      ].join(" "));
+    });
+  }, []);
+
+  const handleImagePreview = (reference: HTMLImageElement, index: number) => {
+    //* change the image clicked to have the active preview class
+    //* and change the others to be inactive
+    refs.current.map((item, i) => {
+      if (i !== index) {
+        return (item.className = [
+          styles.smallImagePreview,
+          styles.inactiveImagePreview,
+        ].join(" "));
+      } else {
+        console.log("INDEX");
+        return (item.className = [
+          styles.smallImagePreview,
+          styles.activeImagePreview,
+        ].join(" "));
+      }
+    });
+
+    setPreviewImage(reference.src);
+  };
+
+  const ImagePreviewComponent = ({ images }: { images: string[] }) => {
+    return (
+      <>
+        {images.map((image, index) => {
+          console.log(refs.current);
+          return (
+            <img
+              key={(image + index) as Key}
+              src={image}
+              ref={(element: HTMLImageElement) => {
+                refs.current[index] = element;
+              }}
+              onClick={() => {
+                handleImagePreview(refs.current[index], index);
+              }}
+              className={
+                refs.current.length !== 0 ? refs.current[index].className : ""
+              }
+            />
+          );
+        })}
+      </>
+    );
+  };
   const data = productsData[0];
-  const tempImageArray = [
-    data.images[0],
-    data.images[1],
-    data.images[0],
-    data.images[1],
-  ];
+  const tempImageArray = [data.images[0], data.images[1]];
   return (
     <>
       <NavbarComponent />
       <div className={styles.productView}>
         <div className={styles.leftViewContainer}>
-          <img src={data.images[0]} className={styles.leftViewMainImage}></img>
+          <img src={previewImage} className={styles.leftViewMainImage}></img>
           <div className={styles.smallImagePreviewContainer}>
-            {tempImageArray.map((image) => {
-              return (
-                <img
-                  key={image as Key}
-                  src={image}
-                  className={[
-                    styles.smallImagePreview,
-                    styles.activeImagePreview,
-                  ].join(" ")}
-                />
-              );
-            })}
+            <ImagePreviewComponent images={tempImageArray} />
           </div>
         </div>
         <div className={styles.rightViewContainer}>

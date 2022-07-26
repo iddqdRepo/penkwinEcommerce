@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import styles from "./product.module.css";
 import NavbarComponent from "../../../../components/NavbarComponent/NavbarComponent";
 import dbConnect from "../../../../utils/dbConnect";

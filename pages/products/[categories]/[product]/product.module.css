@@ -83,8 +83,6 @@
   flex-direction: row;
   padding-top: 10px;
 }
-.rightViewStars {
-}
 
 .rightViewReviewCount {
   padding-left: 10px;
@@ -149,7 +147,7 @@
 
 .addToCart {
   background-color: white;
-  color: #295e63;
+  color: #388087;
   border: 1px solid #9abec1;
   width: 98%;
   padding-left: 5px;
@@ -160,4 +158,79 @@
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
   font-weight: 600;
+}
+
+.soldOut {
+  opacity: 0.5;
+}
+
+.boldTitle {
+  padding-top: 30px;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3d4246;
+  line-height: 1.5;
+}
+
+.shortDescriptionDescription {
+  padding-top: 15px;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #3d4246;
+  line-height: 1.5;
+}
+
+.boldCarePackageText {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3d4246;
+  line-height: 1.5;
+}
+
+.packageContents {
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #3d4246;
+  line-height: 1.5;
+}
+
+.furtherDescription {
+  padding-top: 15px;
+  padding-bottom: 50px;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #3d4246;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 850px) {
+  .productView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* width: 60%; */
+    margin: 0 auto;
+    margin-top: 50px;
+    background: linear-gradient(180deg, #fefefe 0, #f7f7f7 100%);
+    margin-bottom: 200px;
+  }
+  .leftViewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    border-right: 0;
+  }
+  .rightViewContainer {
+    width: 95%;
+    padding-left: 30px;
+    margin-top: 50px;
+  }
 }

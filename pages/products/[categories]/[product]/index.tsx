@@ -30,6 +30,35 @@ function Product({ productsData }: { productsData: any }) {
     });
   }, []);
 
+  const ShortDescription = ({
+    descData,
+  }: {
+    descData: { packageContents: []; [key: string]: string | [] };
+  }) => {
+    return (
+      <>
+        <p className={styles.boldTitle}>{descData.boldTitle}</p>
+        <div className={styles.shortDescriptionDescription}>
+          {descData.description}
+        </div>
+        <p className={styles.boldCarePackageText}>
+          {descData.boldCarePackageText}
+        </p>
+        {descData.packageContents.map((item: string) => {
+          return (
+            <div key={item as Key} className={styles.packageContents}>
+              -{item}
+            </div>
+          );
+        })}
+
+        <p className={styles.furtherDescription}>
+          {descData.furtherDescription}
+        </p>
+      </>
+    );
+  };
+
   const handleImagePreview = (reference: HTMLImageElement, index: number) => {
     //* change the image clicked to have the active preview class
     //* and change the others to be inactive
@@ -40,7 +69,6 @@ function Product({ productsData }: { productsData: any }) {
           styles.inactiveImagePreview,
         ].join(" "));
       } else {
-        console.log("INDEX");
         return (item.className = [
           styles.smallImagePreview,
           styles.activeImagePreview,
@@ -55,7 +83,6 @@ function Product({ productsData }: { productsData: any }) {
     return (
       <>
         {images.map((image, index) => {
-          console.log(refs.current);
           return (
             <img
               key={(image + index) as Key}
@@ -91,13 +118,11 @@ function Product({ productsData }: { productsData: any }) {
             <div className={styles.rightViewtitle}>{data.title}</div>
             <div className={styles.rightViewQty}>Sold out</div>
             <div className={styles.rightReviewContainer}>
-              <div className={styles.rightViewStars}>
-                <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
-                <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
-                <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
-                <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
-                <Icon icon="clarity:star-solid" color="lightgray" width="20" />
-              </div>
+              <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
+              <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
+              <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
+              <Icon icon="clarity:star-solid" color="#ffce31" width="20" />
+              <Icon icon="clarity:star-solid" color="lightgray" width="20" />
               <div className={styles.rightViewReviewCount}>489 reviews</div>
             </div>
 
@@ -126,6 +151,7 @@ function Product({ productsData }: { productsData: any }) {
           <div className={styles.buyButtonContainer}>
             <button className={styles.addToCart}>SOLD OUT</button>
           </div>
+          <ShortDescription descData={data.shortDescription} />
         </div>
       </div>
     </>

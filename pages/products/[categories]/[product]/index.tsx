@@ -76,7 +76,6 @@ function Product({ productsData }: { productsData: any }) {
     );
   };
   const data = productsData[0];
-  const tempImageArray = [data.images[0], data.images[1]];
   return (
     <>
       <NavbarComponent />
@@ -84,7 +83,7 @@ function Product({ productsData }: { productsData: any }) {
         <div className={styles.leftViewContainer}>
           <img src={previewImage} className={styles.leftViewMainImage}></img>
           <div className={styles.smallImagePreviewContainer}>
-            <ImagePreviewComponent images={tempImageArray} />
+            <ImagePreviewComponent images={productsData[0].images} />
           </div>
         </div>
         <div className={styles.rightViewContainer}>

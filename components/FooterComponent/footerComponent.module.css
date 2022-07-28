@@ -92,3 +92,9 @@ color:#388087;
   font-size: 14.4px;
   line-height: 21.6px;
 }
+
+@media only screen and (max-width: 960px) {
+  .linksContainer {
+    flex-direction: column;
+  }
+}

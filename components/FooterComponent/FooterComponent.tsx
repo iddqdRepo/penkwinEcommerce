@@ -48,14 +48,14 @@ function FooterComponent() {
             <hr className={styles.divider} />
             <div className={styles.title}>Contact Us</div>
             <div className={styles.contactInfo}>
-              Penkwin is a registered trademark of Penguin Trading Ltd. For
+              Penkwin is a registered trademark of Tinywolf Trading Ltd. For
               enquiries please email happiness@penkwin.co.uk
             </div>
           </div>
         </div>
         <hr className={styles.footerDivider} />
         <div className={styles.copyrightText}>
-          © Copyright Penguin Trading Ltd 2019. All Rights Reserved.
+          © Copyright Tinywolf Trading Ltd 2019. All Rights Reserved.
         </div>
       </div>
     </>

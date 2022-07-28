@@ -9,7 +9,8 @@ import { Icon } from "@iconify/react";
 import { useRef, useState, Key, useEffect } from "react";
 
 function Product({ productsData }: { productsData: any }) {
-  const [previewImage, setPreviewImage] = useState(productsData[0].images[0]);
+  const data = productsData[0];
+  const [previewImage, setPreviewImage] = useState(data.images[0]);
 
   //TODO - useRef typescript, then
   const refs = useRef<HTMLImageElement[]>([]);
@@ -31,20 +32,20 @@ function Product({ productsData }: { productsData: any }) {
   }, []);
 
   const ShortDescription = ({
-    descData,
+    shortDescData,
   }: {
-    descData: { packageContents: []; [key: string]: string | [] };
+    shortDescData: { packageContents: []; [key: string]: string | [] };
   }) => {
     return (
       <>
-        <p className={styles.boldTitle}>{descData.boldTitle}</p>
+        <p className={styles.boldTitle}>{shortDescData.boldTitle}</p>
         <div className={styles.shortDescriptionDescription}>
-          {descData.description}
+          {shortDescData.description}
         </div>
         <p className={styles.boldCarePackageText}>
-          {descData.boldCarePackageText}
+          {shortDescData.boldCarePackageText}
         </p>
-        {descData.packageContents.map((item: string) => {
+        {shortDescData.packageContents.map((item: string) => {
           return (
             <div key={item as Key} className={styles.packageContents}>
               -{item}
@@ -53,9 +54,34 @@ function Product({ productsData }: { productsData: any }) {
         })}
 
         <p className={styles.furtherDescription}>
-          {descData.furtherDescription}
+          {shortDescData.furtherDescription}
         </p>
       </>
+    );
+  };
+
+  const DescriptionSection = ({
+    descData,
+  }: {
+    descData: { image: string; bullets: []; [key: string]: string | [] };
+  }) => {
+    return (
+      <div className={styles.descriptionContainer}>
+        <div className={styles.descriptionLeft}>
+          <p className={styles.descTitle}>{descData.title}</p>
+          <p className={styles.headerText}>{descData.headerText}</p>
+          {descData.bullets.map((bullet: string) => {
+            return (
+              <p key={bullet as Key} className={styles.descriptionBullet}>
+                <Icon icon="teenyicons:tick-circle-solid" /> {bullet}
+              </p>
+            );
+          })}
+        </div>
+        <div className={styles.imageRightContainer}>
+          <img className={styles.imageRight} src={descData.image} alt="" />
+        </div>
+      </div>
     );
   };
 
@@ -102,7 +128,31 @@ function Product({ productsData }: { productsData: any }) {
       </>
     );
   };
-  const data = productsData[0];
+
+  const FaqComponent = ({
+    faqData,
+  }: {
+    faqData: { [key: string]: string }[];
+  }) => {
+    return (
+      <>
+        <div className={styles.faqContainer}>
+          <p className={styles.descTitle}>Quick FAQ</p>
+          {faqData.map((faq) => {
+            return (
+              <div key={faq.question as Key} className={styles.qaContainer}>
+                <div className={styles.question}>
+                  <Icon icon="akar-icons:chat-question" /> {faq.question}
+                </div>
+                <div className={styles.answer}>{faq.answer}</div>
+              </div>
+            );
+          })}
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
       <NavbarComponent />
@@ -151,9 +201,11 @@ function Product({ productsData }: { productsData: any }) {
           <div className={styles.buyButtonContainer}>
             <button className={styles.addToCart}>SOLD OUT</button>
           </div>
-          <ShortDescription descData={data.shortDescription} />
+          <ShortDescription shortDescData={data.shortDescription} />
         </div>
       </div>
+      <DescriptionSection descData={data.description} />
+      <FaqComponent faqData={data.faq} />
     </>
   );
 }

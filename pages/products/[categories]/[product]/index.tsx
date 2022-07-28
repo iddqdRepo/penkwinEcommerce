@@ -153,6 +153,100 @@ function Product({ productsData }: { productsData: any }) {
     );
   };
 
+  const ReviewComponent = () => {
+    return (
+      <>
+        <div className={styles.reviewContainer}>
+          <div className={styles.reviewHeaderContainer}>
+            <div className={styles.reviewWriteAndTitleContainer}>
+              <p className={styles.reviewContainerTitle}>CUSTOMER REVIEWS</p>
+              <p className={styles.reviewWriteAReview}>Write a review</p>
+            </div>
+            <div className={styles.starReviewContainer}>
+              <div className={styles.stars}>
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="30"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="30"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="30"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="30"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="lightgray"
+                  width="30"
+                  inline={true}
+                />
+              </div>
+              <div className={styles.reviewCount}>Based on 489 reviews</div>
+            </div>
+          </div>
+
+          <div className={styles.reviewSectionContainer}>
+            <div className={styles.stars}>
+              <Icon
+                icon="clarity:star-solid"
+                color="#ffce31"
+                width="18"
+                inline={true}
+              />
+              <Icon
+                icon="clarity:star-solid"
+                color="#ffce31"
+                width="18"
+                inline={true}
+              />
+              <Icon
+                icon="clarity:star-solid"
+                color="#ffce31"
+                width="18"
+                inline={true}
+              />
+              <Icon
+                icon="clarity:star-solid"
+                color="#ffce31"
+                width="18"
+                inline={true}
+              />
+              <Icon
+                icon="clarity:star-solid"
+                color="lightgray"
+                width="18"
+                inline={true}
+              />
+            </div>
+            <p className={styles.reviewTitle}>very good</p>
+            <p className={styles.reviewContainerNameAndDate}>
+              {<strong>John</strong>} on {<strong>12th July</strong>}
+            </p>
+            <div className={styles.reviewWriteAndTitleContainer}>
+              <p className={styles.reviewText}>very good</p>
+              <div className={styles.reportReview}>Report as Inappropriate</div>
+            </div>
+          </div>
+          <div className={styles.reviewFooterPagination}>1,2,3,4,5</div>
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
       <NavbarComponent />
@@ -206,6 +300,7 @@ function Product({ productsData }: { productsData: any }) {
       </div>
       <DescriptionSection descData={data.description} />
       <FaqComponent faqData={data.faq} />
+      <ReviewComponent />
     </>
   );
 }

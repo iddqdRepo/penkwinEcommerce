@@ -1,7 +1,7 @@
 .productView {
   display: flex;
   justify-content: center;
-  /* width: 60%; */
+  /** width: 60%; */
   margin: 0 auto;
   margin-top: 100px;
   max-width: 1200px;
@@ -208,11 +208,13 @@
   color: #3d4246;
   line-height: 1.5;
 }
+/** ----------------------------- DESCRIPTION COMPONENT START ----------------------------- */
 
 .descriptionContainer {
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0px 30px 0px 30px;
 }
 
 .descriptionLeft {
@@ -248,24 +250,28 @@
 .imageRightContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-basis: 50%;
 }
 .imageRight {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+  height: 80%;
+  width: 80%;
+  object-fit: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+/** ----------------------------- FAQ COMPONENT START ----------------------------- */
+
 .faqContainer {
   display: flex;
   max-width: 1200px;
-  margin: 50px auto;
+  margin: 80px auto;
   flex-direction: column;
+  padding: 0px 30px 0px 30px;
 }
 
-.qaContainer {
+.faqContainer {
 }
 
 .question {
@@ -283,10 +289,90 @@
   color: #3d4246;
   line-height: 1.5;
 }
+/** ----------------------------- REVIEW COMPONENT START ----------------------------- */
 
 .reviewContainer {
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.0625rem solid #d8d8d8;
+  display: flex;
+  max-width: 1250px;
+  margin: 0 auto;
+  margin-bottom: 200px;
 }
+.reviewHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border-bottom: 0.0625rem solid #d8d8d8;
+  margin-bottom: 30px;
+  padding: 20px 0px 20px 0px;
+}
+.reviewWriteAndTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+.reviewContainerTitle {
+  display: flex;
+  flex-direction: row;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3d4246;
+  line-height: 1.5;
+}
+.reviewWriteAReview {
+  display: flex;
+  flex-direction: row;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #3d4246;
+  line-height: 1.5;
+  text-decoration: underline;
+}
+.starReviewContainer {
+  display: flex;
+}
+.stars {
+  display: flex;
+}
+.reviewCount {
+  display: flex;
+  flex-direction: row;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #3d4246;
+  line-height: 1.5;
+  padding-left: 8px;
+  padding-top: 3px;
+}
+.reviewSectionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border-bottom: 0.0625rem solid #d8d8d8;
+  margin-bottom: 30px;
+  padding: 20px 0px 20px 0px;
+}
+.reviewTitle {
+  padding: 10px 0px 10px 0px;
+}
+.reviewContainerNameAndDate {
+  padding: 10px 0px 10px 0px;
+}
+.reviewText {
+  padding: 10px 0px 10px 0px;
+}
+
+.reportReview {
+  padding: 10px 0px 10px 0px;
+  text-decoration: underline;
+}
+/** ----------------------------- MEDIA QUERIES START ----------------------------- */
 
 @media only screen and (max-width: 850px) {
   .productView {
@@ -294,11 +380,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* width: 60%; */
     margin: 0 auto;
     margin-top: 50px;
     background: linear-gradient(180deg, #fefefe 0, #f7f7f7 100%);
-    margin-bottom: 200px;
+    margin-bottom: 100px;
   }
   .leftViewContainer {
     display: flex;
@@ -311,5 +396,20 @@
     width: 95%;
     padding-left: 30px;
     margin-top: 50px;
+  }
+
+  .descriptionContainer {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .reviewWriteAndTitleContainer {
+    flex-direction: column;
+  }
+
+  .starReviewContainer {
+    flex-direction: column;
   }
 }

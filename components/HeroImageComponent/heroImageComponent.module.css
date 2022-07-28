@@ -3,3 +3,7 @@
   justify-content: center;
   margin-bottom: 60px;
 }
+.heroImageContainer img {
+  height: auto;
+  max-width: 100%;
+}

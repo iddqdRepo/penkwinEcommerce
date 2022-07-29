@@ -6,29 +6,84 @@ import dbConnect from "../../../../utils/dbConnect";
 import productsModel from "../../../../Models/productsModel";
 import { stringifyIdsAndDates } from "../../../../utils/stringifyIdsAndDates";
 import { Icon } from "@iconify/react";
-import { useRef, useState, Key, useEffect } from "react";
+import { useRef, useState, Key, useEffect, MouseEvent } from "react";
 
 function Product({ productsData }: { productsData: any }) {
   const data = productsData[0];
   const [previewImage, setPreviewImage] = useState(data.images[0]);
-
-  //TODO - useRef typescript, then
-  const refs = useRef<HTMLImageElement[]>([]);
-
+  const [shownReviews, setShownReviews] = useState(null);
   useEffect(() => {
+    setShownReviews(data.reviews);
+  }, []);
+
+  const imagePreviewRefs = useRef<HTMLImageElement[]>([]);
+  const paginationHighlightRefs = useRef<HTMLDivElement[]>([]);
+  const allSplitReviews = useRef<[]>([]);
+  const numPages = useRef<[]>([]);
+  const currentPage = useRef<number>(1);
+  //! THE INITIAL CSS ISNT BEING SET IN USEEFFECT FOR paginationHighlightRefs, PERHAPS DUE TO THE OTHER USEEFFECT NOT
+  //! BEING FINISHED RESULTING IN THE INITIAL ARRAY BEING EMPTY
+  useEffect(() => {
+    console.log("paginationHighlightRefs ", paginationHighlightRefs.current);
+    paginationHighlightRefs.current.map((item, index) => {
+      console.log("paginationHighlightRefs current", item);
+
+      if (index === 0) {
+        return (item.className = [
+          styles.reviewFooterPagination,
+          styles.underline,
+        ].join(" "));
+      } else {
+        return (item.className = styles.reviewFooterPagination);
+      }
+    });
+
     //* set the initial classname for the preview images
-    refs.current.map((item, index) => {
+    imagePreviewRefs.current.map((item, index) => {
       if (index === 0) {
         return (item.className = [
           styles.smallImagePreview,
           styles.activeImagePreview,
         ].join(" "));
+      } else {
+        return (item.className = [
+          styles.smallImagePreview,
+          styles.inactiveImagePreview,
+        ].join(" "));
       }
-      return (item.className = [
-        styles.smallImagePreview,
-        styles.inactiveImagePreview,
-      ].join(" "));
     });
+    console.log("useEffect 2");
+  }, []);
+
+  useEffect(() => {
+    const createSplitArrayForPagination = () => {
+      if (data.reviews.length > 5) {
+        let reviewsTempSplitArrayTotal = [];
+        let temp = [];
+        let tempPage = [];
+        let totalLoop = Math.round(data.reviews.length / 5);
+        console.log("totalLoop =", totalLoop);
+        let count = 0;
+        for (let i = 0; i < totalLoop; i++) {
+          temp = data.reviews.slice(count, count + 5);
+          count += 5;
+          reviewsTempSplitArrayTotal.push(temp);
+          tempPage.push(i + 1);
+        }
+        numPages.current = tempPage;
+        setShownReviews(reviewsTempSplitArrayTotal[0]);
+        currentPage.current = 1;
+        return reviewsTempSplitArrayTotal;
+      } else {
+        setShownReviews(data.reviews);
+        numPages.current.push(1);
+        currentPage.current = 1;
+        return data.reviews;
+      }
+    };
+    allSplitReviews.current = createSplitArrayForPagination();
+    // console.log("numPages = ", numPages.current);
+    // console.log("allSplitReviews = ", allSplitReviews.current);
   }, []);
 
   const ShortDescription = ({
@@ -88,7 +143,7 @@ function Product({ productsData }: { productsData: any }) {
   const handleImagePreview = (reference: HTMLImageElement, index: number) => {
     //* change the image clicked to have the active preview class
     //* and change the others to be inactive
-    refs.current.map((item, i) => {
+    imagePreviewRefs.current.map((item, i) => {
       if (i !== index) {
         return (item.className = [
           styles.smallImagePreview,
@@ -106,6 +161,7 @@ function Product({ productsData }: { productsData: any }) {
   };
 
   const ImagePreviewComponent = ({ images }: { images: string[] }) => {
+    console.log("ImagePreviewComponent");
     return (
       <>
         {images.map((image, index) => {
@@ -114,13 +170,15 @@ function Product({ productsData }: { productsData: any }) {
               key={(image + index) as Key}
               src={image}
               ref={(element: HTMLImageElement) => {
-                refs.current[index] = element;
+                imagePreviewRefs.current[index] = element;
               }}
               onClick={() => {
-                handleImagePreview(refs.current[index], index);
+                handleImagePreview(imagePreviewRefs.current[index], index);
               }}
               className={
-                refs.current.length !== 0 ? refs.current[index].className : ""
+                imagePreviewRefs.current.length !== 0
+                  ? imagePreviewRefs.current[index].className
+                  : ""
               }
             />
           );
@@ -150,6 +208,123 @@ function Product({ productsData }: { productsData: any }) {
           })}
         </div>
       </>
+    );
+  };
+
+  const ReviewBuilder = ({
+    reviewsToShow,
+  }: {
+    reviewsToShow: { [key: string]: string }[];
+  }) => {
+    return (
+      <>
+        {reviewsToShow.map((review) => {
+          return (
+            <div className={styles.reviewSectionContainer}>
+              <div className={styles.stars}>
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="18"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="18"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="18"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="#ffce31"
+                  width="18"
+                  inline={true}
+                />
+                <Icon
+                  icon="clarity:star-solid"
+                  color="lightgray"
+                  width="18"
+                  inline={true}
+                />
+              </div>
+              <p className={styles.reviewContainerNameAndDate}>
+                {<strong>{review.name}</strong>} on{" "}
+                {<strong>{review.date}</strong>}
+              </p>
+              <div className={styles.reviewWriteAndTitleContainer}>
+                <p className={styles.reviewText}>{review.review}</p>
+                <div className={styles.reportReview}>
+                  Report as Inappropriate
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const handlePaginationClick = (
+    pageRef,
+    index: number,
+    pageCurrentlyOn: number
+  ) => {
+    console.log(
+      "index of page clicked = ",
+      index,
+      "currently on page",
+      pageCurrentlyOn
+    );
+    console.log("pageRef", pageRef);
+    paginationHighlightRefs.current.map((item, i) => {
+      if (i === index) {
+        return (item.className = [
+          styles.reviewFooterPagination,
+          styles.underline,
+        ].join(" "));
+      } else {
+        return (item.className = [styles.reviewFooterPagination].join(" "));
+      }
+    });
+    setShownReviews(allSplitReviews.current[index - 1]);
+    currentPage.current = index;
+  };
+
+  const PaginationFooterBuilder = ({ pages }) => {
+    console.log("PaginationFooterBuilder");
+    return (
+      <div className={styles.reviewFooterContainer}>
+        {pages.map((index) => {
+          return (
+            <div
+              key={index as Key}
+              ref={(element: HTMLDivElement) => {
+                paginationHighlightRefs.current[index] = element;
+              }}
+              className={
+                paginationHighlightRefs.current.length !== 0
+                  ? paginationHighlightRefs.current[index].className
+                  : ""
+              }
+              onClick={() => {
+                handlePaginationClick(
+                  paginationHighlightRefs.current[index],
+                  index,
+                  currentPage.current
+                );
+              }}
+            >
+              {index}
+            </div>
+          );
+        })}
+      </div>
     );
   };
 
@@ -198,50 +373,12 @@ function Product({ productsData }: { productsData: any }) {
               <div className={styles.reviewCount}>Based on 489 reviews</div>
             </div>
           </div>
-
-          <div className={styles.reviewSectionContainer}>
-            <div className={styles.stars}>
-              <Icon
-                icon="clarity:star-solid"
-                color="#ffce31"
-                width="18"
-                inline={true}
-              />
-              <Icon
-                icon="clarity:star-solid"
-                color="#ffce31"
-                width="18"
-                inline={true}
-              />
-              <Icon
-                icon="clarity:star-solid"
-                color="#ffce31"
-                width="18"
-                inline={true}
-              />
-              <Icon
-                icon="clarity:star-solid"
-                color="#ffce31"
-                width="18"
-                inline={true}
-              />
-              <Icon
-                icon="clarity:star-solid"
-                color="lightgray"
-                width="18"
-                inline={true}
-              />
-            </div>
-            <p className={styles.reviewTitle}>very good</p>
-            <p className={styles.reviewContainerNameAndDate}>
-              {<strong>John</strong>} on {<strong>12th July</strong>}
-            </p>
-            <div className={styles.reviewWriteAndTitleContainer}>
-              <p className={styles.reviewText}>very good</p>
-              <div className={styles.reportReview}>Report as Inappropriate</div>
-            </div>
-          </div>
-          <div className={styles.reviewFooterPagination}>1,2,3,4,5</div>
+          {shownReviews === null ? (
+            <div className={styles.loading}></div>
+          ) : (
+            <ReviewBuilder reviewsToShow={shownReviews} />
+          )}
+          <PaginationFooterBuilder pages={numPages.current} />
         </div>
       </>
     );

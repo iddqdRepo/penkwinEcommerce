@@ -372,6 +372,21 @@
   padding: 10px 0px 10px 0px;
   text-decoration: underline;
 }
+
+.reviewFooterContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.reviewFooterPagination {
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 /** ----------------------------- MEDIA QUERIES START ----------------------------- */
 
 @media only screen and (max-width: 850px) {

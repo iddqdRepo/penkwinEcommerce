@@ -15,8 +15,10 @@ const faqSchema = new mongoose.Schema({
 const reviewSchema = new mongoose.Schema({
   name: { type: "String", required: true },
   date: { type: "String", required: true, default: Date },
+  title: { type: "String", required: true },
   rating: { type: "Number", required: true },
   review: { type: "String", required: true },
+  email: { type: "String", required: true },
 });
 
 const productSchema = new mongoose.Schema(

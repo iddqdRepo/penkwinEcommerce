@@ -1,0 +1,53 @@
+.stayInTouchContainer {
+  background-color: #69727b0d;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stayInTouchTitle {
+  padding-top: 80px;
+  font-family: "work-sans", Arial, Helvetica, sans-serif;
+  font-size: 1.16667em;
+  font-weight: 700;
+  color: #4a4a4a;
+  margin-bottom: 17.5px;
+}
+
+.stayInTouchSubtitle {
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #69727b;
+  line-height: 27px;
+  margin-bottom: 55px;
+}
+
+.emailContainer {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 560px;
+  justify-content: center;
+}
+
+.emailTextBox {
+  padding: 10px, 18px;
+  border-color: #7b7b7b;
+  flex-basis: 70%;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+}
+#inputID::placeholder {
+  color: #ff0000;
+  opacity: 1;
+}
+
+.subscribeButton {
+  flex-basis: 30%;
+  background-color: #388087;
+  font-family: "work-sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}

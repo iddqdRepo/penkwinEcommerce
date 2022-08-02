@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react";
 import { useRef, useState, Key } from "react";
 import FooterComponent from "../../../../components/FooterComponent/FooterComponent";
 import ReviewComponent from "../../../../components/ReviewComponent";
+import StayInTouchComponent from "../../../../components/StayInTouchComponent/StayInTouchComponent";
 
 function Product({ productsData }: { productsData: any }) {
   const data = productsData[0];
@@ -200,6 +201,7 @@ function Product({ productsData }: { productsData: any }) {
       <DescriptionSection descData={data.description} />
       <FaqComponent faqData={data.faq} />
       <ReviewComponent data={data} />
+      <StayInTouchComponent />
       <FooterComponent />
     </>
   );

@@ -55,7 +55,7 @@ const ReviewComponent = ({ data }: { data: any }) => {
                 handlePaginationClick(item);
               }}
             >
-              {item}
+              {index < 11 ? item : <></>}
             </div>
           );
         })}
@@ -110,6 +110,9 @@ const ReviewComponent = ({ data }: { data: any }) => {
               <p className={styles.reviewContainerNameAndDate}>
                 {<strong>{review.name}</strong>} on{" "}
                 {<strong>{review.date}</strong>}
+              </p>
+              <p className={styles.reviewText}>
+                {<strong>{review.title}</strong>}
               </p>
               <div className={styles.reviewWriteAndTitleContainer}>
                 <p className={styles.reviewText}>{review.review}</p>

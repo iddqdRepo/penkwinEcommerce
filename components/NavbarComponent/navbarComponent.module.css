@@ -28,6 +28,7 @@
   width: 70%;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .dropdownLink {
   color: black;
@@ -62,6 +63,7 @@
 .navItem:hover .ulDropdownList {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
 }
 .ulDropdownList {
   position: absolute;
@@ -92,6 +94,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-left: 15px;
 }
 
 .icon {
@@ -137,8 +140,74 @@
 .liDropdownItem:hover {
   background: #666;
 } */
-@media only screen and (max-width: 850px) {
-  .navbarContainer {
+@media only screen and (max-width: 868px) {
+  /* .navbarContainer {
     display: none;
+  } */
+  .iconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .linksContainer {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    flex-wrap: wrap;
+  }
+
+  .navItem {
+    padding-bottom: 0px;
+  }
+
+  .logoImage {
+    /* height: 80%;
+    width: 80%;
+    object-fit: contain;
+    background-position: center;
+    background-repeat: no-repeat; */
+  }
+}
+
+/*^ Mobile Nav kick in at 660px */
+@media only screen and (max-width: 660px) {
+  /* .navbarContainer {
+    display: none;
+  } */
+  .iconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .linksContainer {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    display: none;
+  }
+  .navbarContainer {
+    justify-content: left;
+  }
+
+  .navItem {
+  }
+
+  .logoImage {
+    /* height: 80%;
+    width: 80%;
+    object-fit: contain;
+    background-position: center;
+    background-repeat: no-repeat; */
   }
 }

@@ -2,7 +2,7 @@ import { useRef, useState, Key, useEffect } from "react";
 import styles from "./reviewComponent.module.css";
 import { Icon } from "@iconify/react";
 
-const ReviewComponent = ({ data }) => {
+const ReviewComponent = ({ data }: { data: any }) => {
   const paginationNumUnderlineRefs = useRef<HTMLDivElement[]>([]);
   const allSplitReviews = useRef<any[]>([]);
   const numPages = useRef<number[]>([]);

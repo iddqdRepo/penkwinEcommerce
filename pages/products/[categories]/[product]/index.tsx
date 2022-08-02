@@ -6,84 +6,41 @@ import dbConnect from "../../../../utils/dbConnect";
 import productsModel from "../../../../Models/productsModel";
 import { stringifyIdsAndDates } from "../../../../utils/stringifyIdsAndDates";
 import { Icon } from "@iconify/react";
-import { useRef, useState, Key, useEffect, MouseEvent } from "react";
+import { useRef, useState, Key, useEffect } from "react";
 
 function Product({ productsData }: { productsData: any }) {
   const data = productsData[0];
   const [previewImage, setPreviewImage] = useState(data.images[0]);
   const [shownReviews, setShownReviews] = useState(null);
-  useEffect(() => {
-    setShownReviews(data.reviews);
-  }, []);
-
   const imagePreviewRefs = useRef<HTMLImageElement[]>([]);
-  const paginationHighlightRefs = useRef<HTMLDivElement[]>([]);
-  const allSplitReviews = useRef<[]>([]);
-  const numPages = useRef<[]>([]);
-  const currentPage = useRef<number>(1);
-  //! THE INITIAL CSS ISNT BEING SET IN USEEFFECT FOR paginationHighlightRefs, PERHAPS DUE TO THE OTHER USEEFFECT NOT
-  //! BEING FINISHED RESULTING IN THE INITIAL ARRAY BEING EMPTY
-  useEffect(() => {
-    console.log("paginationHighlightRefs ", paginationHighlightRefs.current);
-    paginationHighlightRefs.current.map((item, index) => {
-      console.log("paginationHighlightRefs current", item);
-
-      if (index === 0) {
-        return (item.className = [
-          styles.reviewFooterPagination,
-          styles.underline,
-        ].join(" "));
-      } else {
-        return (item.className = styles.reviewFooterPagination);
-      }
-    });
-
-    //* set the initial classname for the preview images
-    imagePreviewRefs.current.map((item, index) => {
-      if (index === 0) {
-        return (item.className = [
-          styles.smallImagePreview,
-          styles.activeImagePreview,
-        ].join(" "));
-      } else {
-        return (item.className = [
-          styles.smallImagePreview,
-          styles.inactiveImagePreview,
-        ].join(" "));
-      }
-    });
-    console.log("useEffect 2");
-  }, []);
+  const paginationNumUnderlineRefs = useRef<HTMLDivElement[]>([]);
+  const allSplitReviews = useRef<any[]>([]);
+  const numPages = useRef<number[]>([]);
 
   useEffect(() => {
-    const createSplitArrayForPagination = () => {
-      if (data.reviews.length > 5) {
-        let reviewsTempSplitArrayTotal = [];
-        let temp = [];
-        let tempPage = [];
-        let totalLoop = Math.round(data.reviews.length / 5);
-        console.log("totalLoop =", totalLoop);
-        let count = 0;
-        for (let i = 0; i < totalLoop; i++) {
-          temp = data.reviews.slice(count, count + 5);
-          count += 5;
-          reviewsTempSplitArrayTotal.push(temp);
-          tempPage.push(i + 1);
-        }
-        numPages.current = tempPage;
-        setShownReviews(reviewsTempSplitArrayTotal[0]);
-        currentPage.current = 1;
-        return reviewsTempSplitArrayTotal;
-      } else {
-        setShownReviews(data.reviews);
-        numPages.current.push(1);
-        currentPage.current = 1;
-        return data.reviews;
+    //* If there are more than 5 reviews, slice the reviews into their own nested array
+    //* 5 at a time. Then add an array of page numbers to numPages, then set the current
+    //* shownReviews useState to show the first entry of 5 reviews.
+    if (data.reviews.length > 5) {
+      let reviewsTempSplitArrayTotal = [];
+      let temp = [];
+      let tempPage = [];
+      let totalLoop = Math.round(data.reviews.length / 5);
+      let count = 0;
+      for (let i = 0; i < totalLoop; i++) {
+        temp = data.reviews.slice(count, count + 5);
+        count += 5;
+        reviewsTempSplitArrayTotal.push(temp);
+        tempPage.push(i + 1);
       }
-    };
-    allSplitReviews.current = createSplitArrayForPagination();
-    // console.log("numPages = ", numPages.current);
-    // console.log("allSplitReviews = ", allSplitReviews.current);
+      numPages.current = [...tempPage];
+      allSplitReviews.current = reviewsTempSplitArrayTotal;
+      setShownReviews(reviewsTempSplitArrayTotal[0]);
+    } else {
+      numPages.current.push(1);
+      allSplitReviews.current = data.reviews;
+      setShownReviews(data.reviews);
+    }
   }, []);
 
   const ShortDescription = ({
@@ -161,7 +118,6 @@ function Product({ productsData }: { productsData: any }) {
   };
 
   const ImagePreviewComponent = ({ images }: { images: string[] }) => {
-    console.log("ImagePreviewComponent");
     return (
       <>
         {images.map((image, index) => {
@@ -178,7 +134,14 @@ function Product({ productsData }: { productsData: any }) {
               className={
                 imagePreviewRefs.current.length !== 0
                   ? imagePreviewRefs.current[index].className
-                  : ""
+                  : index === 0
+                  ? [styles.smallImagePreview, styles.activeImagePreview].join(
+                      " "
+                    )
+                  : [
+                      styles.smallImagePreview,
+                      styles.inactiveImagePreview,
+                    ].join(" ")
               }
             />
           );
@@ -211,6 +174,8 @@ function Product({ productsData }: { productsData: any }) {
     );
   };
 
+  //TODO
+  //! CHANGE KEY FOR THIS
   const ReviewBuilder = ({
     reviewsToShow,
   }: {
@@ -220,7 +185,10 @@ function Product({ productsData }: { productsData: any }) {
       <>
         {reviewsToShow.map((review) => {
           return (
-            <div className={styles.reviewSectionContainer}>
+            <div
+              key={(review.name + review.rating) as Key}
+              className={styles.reviewSectionContainer}
+            >
               <div className={styles.stars}>
                 <Icon
                   icon="clarity:star-solid"
@@ -270,19 +238,8 @@ function Product({ productsData }: { productsData: any }) {
     );
   };
 
-  const handlePaginationClick = (
-    pageRef,
-    index: number,
-    pageCurrentlyOn: number
-  ) => {
-    console.log(
-      "index of page clicked = ",
-      index,
-      "currently on page",
-      pageCurrentlyOn
-    );
-    console.log("pageRef", pageRef);
-    paginationHighlightRefs.current.map((item, i) => {
+  const handlePaginationClick = (index: number) => {
+    paginationNumUnderlineRefs.current.map((item, i) => {
       if (i === index) {
         return (item.className = [
           styles.reviewFooterPagination,
@@ -293,34 +250,30 @@ function Product({ productsData }: { productsData: any }) {
       }
     });
     setShownReviews(allSplitReviews.current[index - 1]);
-    currentPage.current = index;
   };
 
-  const PaginationFooterBuilder = ({ pages }) => {
-    console.log("PaginationFooterBuilder");
+  const PaginationFooterBuilder = ({ pages }: { pages: number[] }) => {
     return (
       <div className={styles.reviewFooterContainer}>
-        {pages.map((index) => {
+        {pages.map((item: number, index: number) => {
           return (
             <div
-              key={index as Key}
+              key={item as Key}
               ref={(element: HTMLDivElement) => {
-                paginationHighlightRefs.current[index] = element;
+                paginationNumUnderlineRefs.current[item] = element;
               }}
               className={
-                paginationHighlightRefs.current.length !== 0
-                  ? paginationHighlightRefs.current[index].className
-                  : ""
+                paginationNumUnderlineRefs.current.length !== 0
+                  ? paginationNumUnderlineRefs.current[item].className
+                  : index === 0
+                  ? [styles.reviewFooterPagination, styles.underline].join(" ")
+                  : styles.reviewFooterPagination
               }
               onClick={() => {
-                handlePaginationClick(
-                  paginationHighlightRefs.current[index],
-                  index,
-                  currentPage.current
-                );
+                handlePaginationClick(item);
               }}
             >
-              {index}
+              {item}
             </div>
           );
         })}
@@ -370,7 +323,9 @@ function Product({ productsData }: { productsData: any }) {
                   inline={true}
                 />
               </div>
-              <div className={styles.reviewCount}>Based on 489 reviews</div>
+              <div className={styles.reviewCount}>
+                Based on {data.reviews.length} reviews
+              </div>
             </div>
           </div>
           {shownReviews === null ? (

@@ -6,42 +6,14 @@ import dbConnect from "../../../../utils/dbConnect";
 import productsModel from "../../../../Models/productsModel";
 import { stringifyIdsAndDates } from "../../../../utils/stringifyIdsAndDates";
 import { Icon } from "@iconify/react";
-import { useRef, useState, Key, useEffect } from "react";
+import { useRef, useState, Key } from "react";
+import FooterComponent from "../../../../components/FooterComponent/FooterComponent";
+import ReviewComponent from "../../../../components/ReviewComponent";
 
 function Product({ productsData }: { productsData: any }) {
   const data = productsData[0];
   const [previewImage, setPreviewImage] = useState(data.images[0]);
-  const [shownReviews, setShownReviews] = useState(null);
   const imagePreviewRefs = useRef<HTMLImageElement[]>([]);
-  const paginationNumUnderlineRefs = useRef<HTMLDivElement[]>([]);
-  const allSplitReviews = useRef<any[]>([]);
-  const numPages = useRef<number[]>([]);
-
-  useEffect(() => {
-    //* If there are more than 5 reviews, slice the reviews into their own nested array
-    //* 5 at a time. Then add an array of page numbers to numPages, then set the current
-    //* shownReviews useState to show the first entry of 5 reviews.
-    if (data.reviews.length > 5) {
-      let reviewsTempSplitArrayTotal = [];
-      let temp = [];
-      let tempPage = [];
-      let totalLoop = Math.round(data.reviews.length / 5);
-      let count = 0;
-      for (let i = 0; i < totalLoop; i++) {
-        temp = data.reviews.slice(count, count + 5);
-        count += 5;
-        reviewsTempSplitArrayTotal.push(temp);
-        tempPage.push(i + 1);
-      }
-      numPages.current = [...tempPage];
-      allSplitReviews.current = reviewsTempSplitArrayTotal;
-      setShownReviews(reviewsTempSplitArrayTotal[0]);
-    } else {
-      numPages.current.push(1);
-      allSplitReviews.current = data.reviews;
-      setShownReviews(data.reviews);
-    }
-  }, []);
 
   const ShortDescription = ({
     shortDescData,
@@ -174,171 +146,6 @@ function Product({ productsData }: { productsData: any }) {
     );
   };
 
-  //TODO
-  //! CHANGE KEY FOR THIS
-  const ReviewBuilder = ({
-    reviewsToShow,
-  }: {
-    reviewsToShow: { [key: string]: string }[];
-  }) => {
-    return (
-      <>
-        {reviewsToShow.map((review) => {
-          return (
-            <div
-              key={(review.name + review.rating) as Key}
-              className={styles.reviewSectionContainer}
-            >
-              <div className={styles.stars}>
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="18"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="18"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="18"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="18"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="lightgray"
-                  width="18"
-                  inline={true}
-                />
-              </div>
-              <p className={styles.reviewContainerNameAndDate}>
-                {<strong>{review.name}</strong>} on{" "}
-                {<strong>{review.date}</strong>}
-              </p>
-              <div className={styles.reviewWriteAndTitleContainer}>
-                <p className={styles.reviewText}>{review.review}</p>
-                <div className={styles.reportReview}>
-                  Report as Inappropriate
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </>
-    );
-  };
-
-  const handlePaginationClick = (index: number) => {
-    paginationNumUnderlineRefs.current.map((item, i) => {
-      if (i === index) {
-        return (item.className = [
-          styles.reviewFooterPagination,
-          styles.underline,
-        ].join(" "));
-      } else {
-        return (item.className = [styles.reviewFooterPagination].join(" "));
-      }
-    });
-    setShownReviews(allSplitReviews.current[index - 1]);
-  };
-
-  const PaginationFooterBuilder = ({ pages }: { pages: number[] }) => {
-    return (
-      <div className={styles.reviewFooterContainer}>
-        {pages.map((item: number, index: number) => {
-          return (
-            <div
-              key={item as Key}
-              ref={(element: HTMLDivElement) => {
-                paginationNumUnderlineRefs.current[item] = element;
-              }}
-              className={
-                paginationNumUnderlineRefs.current.length !== 0
-                  ? paginationNumUnderlineRefs.current[item].className
-                  : index === 0
-                  ? [styles.reviewFooterPagination, styles.underline].join(" ")
-                  : styles.reviewFooterPagination
-              }
-              onClick={() => {
-                handlePaginationClick(item);
-              }}
-            >
-              {item}
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const ReviewComponent = () => {
-    return (
-      <>
-        <div className={styles.reviewContainer}>
-          <div className={styles.reviewHeaderContainer}>
-            <div className={styles.reviewWriteAndTitleContainer}>
-              <p className={styles.reviewContainerTitle}>CUSTOMER REVIEWS</p>
-              <p className={styles.reviewWriteAReview}>Write a review</p>
-            </div>
-            <div className={styles.starReviewContainer}>
-              <div className={styles.stars}>
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="30"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="30"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="30"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="#ffce31"
-                  width="30"
-                  inline={true}
-                />
-                <Icon
-                  icon="clarity:star-solid"
-                  color="lightgray"
-                  width="30"
-                  inline={true}
-                />
-              </div>
-              <div className={styles.reviewCount}>
-                Based on {data.reviews.length} reviews
-              </div>
-            </div>
-          </div>
-          {shownReviews === null ? (
-            <div className={styles.loading}></div>
-          ) : (
-            <ReviewBuilder reviewsToShow={shownReviews} />
-          )}
-          <PaginationFooterBuilder pages={numPages.current} />
-        </div>
-      </>
-    );
-  };
-
   return (
     <>
       <NavbarComponent />
@@ -392,7 +199,8 @@ function Product({ productsData }: { productsData: any }) {
       </div>
       <DescriptionSection descData={data.description} />
       <FaqComponent faqData={data.faq} />
-      <ReviewComponent />
+      <ReviewComponent data={data} />
+      <FooterComponent />
     </>
   );
 }

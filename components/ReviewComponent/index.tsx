@@ -35,9 +35,16 @@ const ReviewComponent = ({ data }: { data: any }) => {
   }, [data.reviews]);
 
   const PaginationFooterBuilder = ({ pages }: { pages: number[] }) => {
+    //! TEMPORARILY REDUCING PAGES
+    let maxPageShow;
+    if (pages.length > 11) {
+      maxPageShow = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    } else {
+      maxPageShow = [...pages];
+    }
     return (
       <div className={styles.reviewFooterContainer}>
-        {pages.map((item: number, index: number) => {
+        {maxPageShow.map((item: number, index: number) => {
           return (
             <div
               key={item as Key}
@@ -55,7 +62,7 @@ const ReviewComponent = ({ data }: { data: any }) => {
                 handlePaginationClick(item);
               }}
             >
-              {index < 11 ? item : <></>}
+              {index + 1}
             </div>
           );
         })}

@@ -1,5 +1,5 @@
 import styles from "./stayInTouchComponent.module.css";
-import { useState } from "react";
+import React, { useState } from "react";
 
 function StayInTouchComponent() {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ function StayInTouchComponent() {
             type="email"
             placeholder="Email Address"
             value={email}
-            onInput={(e) => {
+            onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
               setEmail(e.target.value);
             }}
             id="inputID"

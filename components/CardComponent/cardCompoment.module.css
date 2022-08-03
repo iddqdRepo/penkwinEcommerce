@@ -2,10 +2,7 @@
   --colour: #234234;
   margin: 0;
 }
-/*^ heights seem to be adjusted to fit the content
-e.g. image normal size at top then title with font size 20px and a 10px margin
-and the container just grows to fit that
-*/
+
 .cardSectionContainer {
   display: flex;
   flex-direction: column;
@@ -27,6 +24,7 @@ and the container just grows to fit that
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .cardHeaderTitle {
   display: flex;
   flex-direction: row;
@@ -48,10 +46,17 @@ and the container just grows to fit that
   color: #69727b;
   line-height: 1.5;
 }
-
-.cardContainer {
-  display: inline-flex;
+.cardContOne {
+  display: flex;
   justify-content: center;
+  flex-direction: row;
+  width: 100vw;
+}
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin: 0 auto;
   /* min-height: 60vh; */
   /* width: auto; */
 }
@@ -59,24 +64,28 @@ and the container just grows to fit that
 .sliderWindow {
   display: flex;
   background-color: #ffffff80;
-  margin: 0 auto;
-
+  /* margin: 0 auto; */
+  justify-content: center;
   /* flex-basis: auto; */
   /* align-items: center; */
-  justify-content: center;
-  /* width:987px; */
   /* width: fit-content; */
   /* width: auto; */
   /* flex: 1 1 auto; */
 }
-
+.leftButtonContainerOffset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  margin-right: 50px;
+}
 .leftButtonContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: auto;
-  order: -10;
 }
+
 .leftButtonImage {
   display: flex;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='42' viewBox='0 0 24 42'%3E%3Cpath d='M22.4572074 1.00746147l-21 20.02482143 20.9479397 19.9751786' stroke='%23999999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none' fill-rule='evenodd' /%3E%3C/svg%3E");
@@ -92,7 +101,6 @@ and the container just grows to fit that
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  /* border: 1px solid blue; */
   width: 22%;
   /* margin-right: -10px; */
   box-sizing: border-box;
@@ -123,7 +131,8 @@ and the container just grows to fit that
   justify-content: center;
   height: 100%;
   /* border: 1px solid blue; */
-  width: 22%;
+  /* width: 22%; */
+  width: 280px;
   /* margin-right: -10px; */
   box-sizing: border-box;
   background-color: white;
@@ -198,7 +207,13 @@ and the container just grows to fit that
   flex-direction: column;
   justify-content: center;
   height: auto;
-  /* order: 20; */
+}
+.rightButtonContainerOffset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  margin-left: 50px;
 }
 .rightButtonImage {
   display: flex;
@@ -206,6 +221,7 @@ and the container just grows to fit that
   flex-direction: column;
   align-items: center;
   height: 50px;
+  width: 10px;
   padding-left: 50px;
   background-repeat: no-repeat;
 }

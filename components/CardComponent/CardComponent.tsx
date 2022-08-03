@@ -44,13 +44,17 @@ function CardComponent() {
 
   const directionButton = (direction: String) => {
     resetMarginsToZero(cardOneRef, cardThreeRef);
+
     if (rightButtonRef.current != null && leftButtonRef.current != null) {
+      console.log("rightButtonRef.current", rightButtonRef.current);
+      console.log("leftButtonRef.current", leftButtonRef.current);
       rightButtonRef.current.className = `${styles.rightButtonContainer}`;
-      leftButtonRef.current.className = `${styles.leftButtonContainer}`;
+      leftButtonRef.current.className = `${styles.leftButtonContainerOffset}`;
     }
 
     if (direction === "right") {
       //^if middle card is in focus (and cardThree and rightButton aren't null)
+
       if (track[1].center && cardThreeRef.current && rightButtonRef.current) {
         focusRemoveOrUnfocusCards(cardOneRef, "remove");
         focusRemoveOrUnfocusCards(cardTwoRef, "unfocus");
@@ -82,11 +86,23 @@ function CardComponent() {
         leftButtonRef.current.className = `${styles.leftButtonContainer}  ${styles.remove}`;
         track[1].center = false;
         track[0].center = true;
+
+        //^ If the left button is clicked from start, when it slides left, offset the right button to keep it uniform
+        //^ so the button doesnt move when sliding back. The left button is done with leftButtonContainerOffset
+        //^ for some peculiar reason.
+        if (
+          rightButtonRef.current != null &&
+          rightButtonRef.current.className !== styles.rightButtonContainerOffset
+        ) {
+          console.log("!offset");
+          rightButtonRef.current.className = `${styles.rightButtonContainerOffset}`;
+        }
       } else {
         focusRemoveOrUnfocusCards(cardOneRef, "unfocus");
         focusRemoveOrUnfocusCards(cardTwoRef, "focus");
         focusRemoveOrUnfocusCards(cardThreeRef, "unfocus");
         leftButtonRef.current!.className = `${styles.leftButtonContainer}`;
+
         resetMarginsToZero(cardOneRef);
 
         track[1].center = true;
@@ -108,14 +124,14 @@ function CardComponent() {
         </div>
       </div>
       <div className={styles.cardContainer}>
+        <div
+          className={styles.leftButtonContainer}
+          ref={leftButtonRef}
+          onClick={() => directionButton("left")}
+        >
+          <div className={styles.leftButtonImage}></div>
+        </div>
         <div className={styles.sliderWindow}>
-          <div
-            className={styles.leftButtonContainer}
-            ref={leftButtonRef}
-            onClick={() => directionButton("left")}
-          >
-            <div className={styles.leftButtonImage}></div>
-          </div>
           {/*//^----------------------------------------------------  CARD LEFT */}
           <div
             className={`${styles.card}  ${styles.cardUnfocused}`}
@@ -173,13 +189,13 @@ function CardComponent() {
               <button className={styles.cardButton}>Learn More</button>
             </div>
           </div>
-          <div
-            className={styles.rightButtonContainer}
-            onClick={() => directionButton("right")}
-            ref={rightButtonRef}
-          >
-            <div className={styles.rightButtonImage}></div>
-          </div>
+        </div>
+        <div
+          className={styles.rightButtonContainer}
+          onClick={() => directionButton("right")}
+          ref={rightButtonRef}
+        >
+          <div className={styles.rightButtonImage}></div>
         </div>
       </div>
     </div>

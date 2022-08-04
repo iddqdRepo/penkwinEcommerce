@@ -7,11 +7,13 @@ function InfoComponent({
   desc,
   image,
   imageSide,
+  imageType,
 }: {
   title: string;
   desc: string | string[];
   image: string;
   imageSide: string;
+  imageType: string;
 }) {
   return imageSide === "right" ? (
     <div className={styles.infoContainer}>
@@ -26,17 +28,25 @@ function InfoComponent({
             );
           })
         ) : (
-          <div className={styles.description}>{desc}</div>
+          <pre className={styles.description}>{desc}</pre>
         )}
       </div>
       <div className={styles.imageContainer}>
-        <img className={styles.image} src={image} alt="" />
+        {imageType === "square" ? (
+          <img className={styles.imageSquare} src={image} alt="" />
+        ) : (
+          <img className={styles.image} src={image} alt="" />
+        )}
       </div>
     </div>
   ) : (
     <div className={styles.infoContainer}>
       <div className={styles.imageContainerLeft}>
-        <img className={styles.imageLeft} src={image} alt="" />
+        {imageType === "square" ? (
+          <img className={styles.imageSquare} src={image} alt="" />
+        ) : (
+          <img className={styles.imageLeft} src={image} alt="" />
+        )}
       </div>
       <div className={styles.textContainerLeft}>
         <div className={styles.title}>{title}</div>

@@ -5,5 +5,11 @@
 }
 .heroImageContainer img {
   height: auto;
-  max-width: 100%;
+  max-width: 80%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .heroImageContainer img {
+    max-width: 100%;
+  }
 }

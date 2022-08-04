@@ -19,7 +19,7 @@ const Home = ({ products }: { products: any }) => {
       return item.featured;
     }
   );
-  console.log(featuredProducts);
+  console.log(products);
 
   return (
     <>
@@ -90,7 +90,7 @@ export default Home;
 
 export async function getStaticProps() {
   dbConnect();
-  const allProductsData = await productsModel.find({ featured: true }).lean();
+  const allProductsData = await productsModel.find().lean();
   stringifyIdsAndDates(allProductsData);
   return { props: { products: allProductsData } };
 }

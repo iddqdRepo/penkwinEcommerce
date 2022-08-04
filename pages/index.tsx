@@ -2,7 +2,6 @@
 import styles from "../styles/Home.module.css";
 import CardComponent from "../components/CardComponent/CardComponent";
 import NavbarComponent from "../components/NavbarComponent/NavbarComponent";
-import CustomerFavouritesContainer from "../components/CustomerFavouritesComponent/CustomerFavouritesComponent";
 import InfoComponent from "../components/InfoComponent/InfoComponent";
 import OurProducts from "../components/OurProductsComponent/OurProductsComponent";
 import TestimonialComponent from "../components/TestimonialComponent/TestimonialComponent";
@@ -15,6 +14,12 @@ import { stringifyIdsAndDates } from "../utils/stringifyIdsAndDates";
 import HeroImageComponent from "../components/HeroImageComponent/HeroImageComponent";
 const Home = ({ products }: { products: any }) => {
   console.log("products = ", products);
+  const featuredProducts = products.filter(
+    (item: { featured: boolean; [key: string]: string | boolean }) => {
+      return item.featured;
+    }
+  );
+  console.log(featuredProducts);
 
   return (
     <>
@@ -33,7 +38,8 @@ const Home = ({ products }: { products: any }) => {
       />
       <div className={styles.spacerFifty}></div>
 
-      <CustomerFavouritesContainer />
+      <OurProducts products={featuredProducts} />
+
       <div className={styles.spacerHundred}></div>
 
       <InfoComponent

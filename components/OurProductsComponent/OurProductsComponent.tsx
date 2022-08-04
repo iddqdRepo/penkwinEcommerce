@@ -95,6 +95,7 @@ function OurProducts({
               />
             ) : item.variant.variants[0].quantity ? (
               <OutOfStock
+                key={(item.title + item.price) as Key}
                 image={item.images[0]}
                 title={item.title}
                 price={item.variant.variants[0].price}

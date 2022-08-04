@@ -77,7 +77,9 @@
   flex-direction: column;
   justify-content: center;
   height: auto;
-  margin-right: 50px;
+  /* margin-right: 50px; */
+  position: relative;
+  right: 25px;
 }
 .leftButtonContainer {
   display: flex;
@@ -213,7 +215,9 @@
   flex-direction: column;
   justify-content: center;
   height: auto;
-  margin-left: 50px;
+  /* margin-left: 50px; */
+  position: relative;
+  left: 25px;
 }
 .rightButtonImage {
   display: flex;
@@ -231,4 +235,92 @@
 
 .hide {
   opacity: 0;
+}
+
+/* ! TRY TO GET THIS TO ADJUST PROPERLY WHEN SCREEN SIZE IS 950PX 
+   ! THE RELATIVE FOR CONTAINEROFFSET WORKS ABOVE, NOT BELOW*/
+
+@media only screen and (max-width: 950px) {
+  .cardSectionContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 850px;
+    padding-bottom: 100px;
+    padding-top: 100px;
+    /* margin-bottom: 50px; */
+  }
+  .cardContainer {
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    /* min-height: 60vh; */
+    /* width: auto; */
+  }
+
+  .rightButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    /* position: relative;
+    right: 50px; */
+    /* margin-right: 50px; */
+
+    border: 1px solid red;
+  }
+  .leftButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    /* position: relative; */
+    left: 250px;
+    /* margin-left: 50px; */
+    border: 1px solid red;
+  }
+  .rightButtonContainerOffset {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    position: relative;
+    border: 1px solid blue;
+    left: 150px; */
+  }
+  .leftButtonContainerOffset {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    right: 75px;
+    border: 1px solid blue; */
+  }
+  .remove {
+    display: none;
+  }
+
+  .hide {
+    opacity: 0;
+  }
+  .sliderWindow {
+    display: flex;
+    background-color: #ffffff80;
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 840px;
+    /* flex-basis: auto; */
+    /* align-items: center; */
+    /* width: fit-content; */
+    /* width: auto; */
+    /* flex: 1 1 auto; */
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .rightButtonContainer {
+    display: none;
+  }
+  .leftButtonContainer {
+    display: none;
+  }
 }

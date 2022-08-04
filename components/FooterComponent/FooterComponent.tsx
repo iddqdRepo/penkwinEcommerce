@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import styles from "./footerComponent.module.css";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 function FooterComponent() {
   return (
@@ -20,36 +21,36 @@ function FooterComponent() {
             <hr className={styles.divider} />
             <div className={styles.title}>Information</div>
             <ul className={styles.links}>
-              <a className={styles.links} href="">
-                About Us
-              </a>
+              <Link href={"/about"}>
+                <a className={styles.links}>Terms and Conditions of Sale</a>
+              </Link>
 
-              <a className={styles.links} href="">
-                Terms and Conditions of Sale
-              </a>
-              <a className={styles.links} href="">
-                Policies & Disclaimers
-              </a>
+              <a className={styles.links}>Policies & Disclaimers</a>
             </ul>
           </div>
           <div className={styles.quickLinks}>
             <hr className={styles.divider} />
             <div className={styles.title}>Quick Links</div>
             <ul>
-              <a className={styles.links} href="">
-                Home
-              </a>
-              <a className={styles.links}>About Us</a>
-              <a className={styles.links}>Products</a>
-              <a className={styles.links}>Instructions</a>
+              <Link href={"/"}>
+                <a className={styles.links}>Home</a>
+              </Link>
+              <Link href={"/about"}>
+                <a className={styles.links}>About Us</a>
+              </Link>
+              <Link href={"/about"}>
+                <a className={styles.links}>Products</a>
+              </Link>
+              <Link href={"/about"}>
+                <a className={styles.links}>Instructions</a>
+              </Link>
             </ul>
           </div>
           <div className={styles.contactUs}>
             <hr className={styles.divider} />
             <div className={styles.title}>Contact Us</div>
             <div className={styles.contactInfo}>
-              Penkwin is a registered trademark of Tinywolf Trading Ltd. For
-              enquiries please email happiness@penkwin.co.uk
+              For enquiries please email happiness@tinywolf.co.uk
             </div>
           </div>
         </div>

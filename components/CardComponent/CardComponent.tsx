@@ -115,7 +115,7 @@ function CardComponent() {
     <div className={styles.cardSectionContainer}>
       <div className={styles.cardTitleDescContainer}>
         <div className={styles.cardHeaderTitle}>
-          WE&apos;VE DONE THE RESEARCH, SO YOU DON&apos;T HAVE TO.
+          We&apos;ve Done The Research, So You Don&apos;t Have To.
         </div>
         <div className={styles.cardHeaderDescription}>
           Thousands of hours of painstaking research, laboratory testing and

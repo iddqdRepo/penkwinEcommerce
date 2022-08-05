@@ -8,7 +8,7 @@ import { stringifyIdsAndDates } from "../../../../utils/stringifyIdsAndDates";
 import { Icon } from "@iconify/react";
 import { useRef, useState, Key } from "react";
 import FooterComponent from "../../../../components/FooterComponent/FooterComponent";
-import ReviewComponent from "../../../../components/ReviewComponent";
+import ReviewComponent from "../../../../components/ReviewComponent/ReviewComponent";
 import StayInTouchComponent from "../../../../components/StayInTouchComponent/StayInTouchComponent";
 
 function Product({ productsData }: { productsData: any }) {

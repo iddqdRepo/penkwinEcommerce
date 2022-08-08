@@ -10,7 +10,6 @@ import TitleHeaderComponent from "../components/TitleHeaderComponent/TitleHeader
 import dbConnect from "../utils/dbConnect.js";
 import productsModel from "../Models/productsModel";
 import { stringifyIdsAndDates } from "../utils/stringifyIdsAndDates";
-// import categoryModel from "./../Models/categoryModel";
 import HeroImageComponent from "../components/HeroImageComponent/HeroImageComponent";
 const Home = ({ products }: { products: any }) => {
   console.log("products = ", products);

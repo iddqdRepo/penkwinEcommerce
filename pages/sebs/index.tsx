@@ -26,6 +26,7 @@ function Sebs() {
         ]}
         image="https://cdn.shopify.com/s/files/1/1225/6296/files/Long_image_test.png?v=1569947704"
         imageSide="left"
+        imageType=""
       />
 
       <FooterComponent />

@@ -26,6 +26,7 @@ function Polyurethane() {
         ]}
         image="https://cdn.shopify.com/s/files/1/1225/6296/files/Long_image_3.png?v=1569947741"
         imageSide="left"
+        imageType=""
       />
 
       <FooterComponent />

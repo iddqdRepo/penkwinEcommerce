@@ -47,6 +47,7 @@ function Categories(props: dataProps) {
         desc={productCategory.cardBullets}
         image={productCategory.cardImage}
         imageSide="right"
+        imageType=""
       />
 
       <TitleHeaderComponent

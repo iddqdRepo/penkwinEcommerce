@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const variantSchema = new mongoose.Schema({
-  title: { type: "String", required: true },
+  title: { type: "String" },
   sku: { type: "String", required: true },
   price: { type: "String", required: true },
   quantity: { type: "Number", required: true },
@@ -15,8 +15,10 @@ const faqSchema = new mongoose.Schema({
 const reviewSchema = new mongoose.Schema({
   name: { type: "String", required: true },
   date: { type: "String", required: true, default: Date },
+  title: { type: "String", required: true },
   rating: { type: "Number", required: true },
   review: { type: "String", required: true },
+  email: { type: "String", required: true },
 });
 
 const productSchema = new mongoose.Schema(
@@ -24,7 +26,7 @@ const productSchema = new mongoose.Schema(
     title: { type: "String", required: true },
     variant: {
       multiple: { type: "Boolean", required: true },
-      variantType: { type: "String", required: true },
+      variantType: { type: "String" },
       variants: [variantSchema],
     },
     images: { type: [], required: true },
@@ -37,15 +39,17 @@ const productSchema = new mongoose.Schema(
         default: "In each care package you will receive:",
       },
       packageContents: { type: [], required: true },
+      furtherDescription: { type: "String", required: true },
     },
     description: {
       title: { type: "String", required: true },
-      headerText: { type: "String", required: true },
+      headerText: { type: "String" },
       bullets: { type: [], required: true },
       image: { type: "String", required: true },
     },
     faq: [faqSchema],
     productCategory: { type: [], required: true },
+    slug: { type: String, required: true },
     sale: {
       onSale: { type: "Boolean", default: false },
       salePrice: { type: "String", default: false },

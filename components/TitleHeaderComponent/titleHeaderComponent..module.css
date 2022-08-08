@@ -11,21 +11,42 @@
   /* margin-top: 100px; */
 }
 .headerTitle {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: center;
   font-family: Monserrat, Arial, Helvetica, sans-serif;
   font-size: 2.625rem;
 
   font-weight: 700;
+  color: #4a4a4a; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Monserrat, Arial, Helvetica, sans-serif;
+  font-size: 2.625rem;
+  font-weight: 700;
   color: #4a4a4a;
+  line-height: 1.2;
+  padding-bottom: 30px;
 }
+
+.subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #4a4a4a;
+  padding-bottom: 20px;
+}
+
 .headerDescription {
   display: flex;
   flex-direction: row;
   justify-content: center;
   font-family: Merriweather, Arial, Helvetica, sans-serif;
-  font-size: 1.25rem;
+  font-size: 18px;
   font-weight: 400;
   color: #69727b;
   line-height: 1.5;

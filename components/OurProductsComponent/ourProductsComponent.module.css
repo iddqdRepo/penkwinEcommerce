@@ -15,6 +15,7 @@ color:#388087;
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .cardHeaderTitle {
   display: flex;
   flex-direction: row;
@@ -54,6 +55,14 @@ color:#388087;
   margin: 20px;
 }
 
+.disabledFavouriteProductContainer {
+  display: flex;
+  max-width: 300px;
+  flex-direction: column;
+  margin: 20px;
+  opacity: 0.6;
+}
+
 .image {
   max-height: auto;
   width: 100%;
@@ -70,6 +79,7 @@ color:#388087;
   text-align: center;
   padding-right: 15px;
   padding-left: 15px;
+  height: 70px;
 }
 
 .price {
@@ -93,8 +103,20 @@ color:#388087;
   color: white;
   text-decoration-line: none;
   border: 0;
+  cursor: pointer;
 }
-
+.disabledButton {
+  background-color: #ccc;
+  padding: 10px 18px;
+  font-family: Work Sans, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: white;
+  text-decoration-line: none;
+  border: 0;
+  pointer-events: none; /* Disable an element interaction, so it will not respond any event */
+}
 /* 
 box-shadow: 0 30px 70px -20px #00000080, 0 53px 50px -50px;
  */

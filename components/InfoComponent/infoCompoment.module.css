@@ -1,6 +1,6 @@
 .infoContainer {
   display: flex;
-  width: 75%;
+  width: 60%;
   background-color: #f9f8f3;
   margin: 0 auto;
   padding: 65px 60px;
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  /* justify-content: center; */
   flex: 0 1 60%;
   padding: 0px 72px 0px 12px;
 }
@@ -23,7 +23,7 @@
   align-items: flex-start;
   justify-content: center;
   flex: 0 1 60%;
-  padding: 0px 0px 0px 72px;
+  padding: 0px 0px 0px 10px;
 }
 
 .title {
@@ -31,17 +31,30 @@
   font-size: 3.3125rem;
   font-weight: 700;
   color: #4a4a4a;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .description {
+  display: flex;
+  flex-wrap: wrap;
   font-family: Merriweather, Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
   color: #69727b;
   line-height: 1.5;
+  overflow-x: auto;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
-
+.infoBullet {
+  padding-bottom: 15px;
+  font-family: monserrat, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #69727b;
+  line-height: 1.5;
+}
 .imageContainer {
   display: flex;
   flex: 0 1 40%;
@@ -51,13 +64,32 @@
 }
 
 .image {
-  width: auto;
+  /* width: auto; */
+  /* min-width: 50%;
   max-width: 100%;
   height: auto;
-  max-height: auto;
-  margin: -120px 0px 0px;
+  max-height: auto; */
+  position: relative;
+  bottom: 150px;
+  /* margin: -120px 0px 0px; */
   box-shadow: #000000 0px 30px 70px -20px;
   border-radius: 10%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: nrepeat;
+}
+.imageSquare {
+  position: relative;
+  bottom: 150px;
+  box-shadow: #000000 0px 30px 70px -20px;
+  border-radius: 10%;
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: nrepeat;
 }
 .imageLeft {
   max-width: 80%;
@@ -71,22 +103,42 @@
   border-radius: 10%;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1402px) {
   .infoContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 90%;
   }
+  /* .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } */
   .textContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: center; */
+    flex: 0 1 60%;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+  }
+
+  .textContainerLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 0px 0px 0px 0px;
   }
 
   .title {
     font-family: Merriweather, Arial, Helvetica, sans-serif;
-    font-size: 3.3125rem;
+    font-size: 2.3125rem;
     font-weight: 700;
     color: #4a4a4a;
   }
@@ -94,7 +146,7 @@
   .description {
     text-align: center;
     font-family: Merriweather, Arial, Helvetica, sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: #69727b;
     line-height: 1.5;
@@ -106,13 +158,27 @@
   }
   .image {
     width: auto;
-    max-width: 50%;
+    bottom: 0px;
+    top: 30px;
+    max-width: 80%;
     height: auto;
     max-height: auto;
     box-shadow: #000000 0px 30px 70px -20px;
     border-radius: 10%;
     margin: 0px;
     margin-top: 20px;
+  }
+  .imageSquare {
+    position: relative;
+    bottom: 0px;
+    top: 30px;
+    box-shadow: #000000 0px 30px 70px -20px;
+    border-radius: 10%;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: nrepeat;
   }
   .imageLeft {
     width: auto;

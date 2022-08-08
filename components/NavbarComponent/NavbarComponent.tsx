@@ -63,7 +63,9 @@ function NavbarComponent() {
               <></>
             )}
           </div>
-          <div className={styles.navItem}>Instructions</div>
+          <Link href={"/instructions"}>
+            <a className={styles.navItem}>Instructions</a>
+          </Link>
           <div className={styles.navItem}>
             Materials
             <Icon
@@ -75,28 +77,30 @@ function NavbarComponent() {
             />
             <ul className={styles.ulDropdownList}>
               <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  PC (Polycarbonate)
-                </a>
+                <Link href="/polycarbonates">
+                  <a className={styles.dropdownLink}>PC (Polycarbonates)</a>
+                </Link>
               </li>
               <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  PU (Polyurethanes)
-                </a>
+                <Link href="/polyurethane">
+                  <a className={styles.dropdownLink}>PU (Polyurethanes)</a>
+                </Link>
               </li>
               <li className={styles.liDropdownItem}>
-                <a className={styles.dropdownLink} href="#">
-                  SEBS
-                </a>
+                <Link href="/sebs">
+                  <a className={styles.dropdownLink}>SEBS</a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div className={styles.navItem}>About Us</div>
-          {/* <div className={styles.navItem}>Contact</div> */}
-          <Link href={"/contact"}>
-            <a className={styles.navItem}>Contact</a>
+          <Link href={"/about"}>
+            <a className={styles.navItem}>About Us</a>
           </Link>
+          {/* <div className={styles.navItem}>Contact</div> */}
+          {/* <Link href={"/contact"}>
+            <a className={styles.navItem}>Contact</a>
+          </Link> */}
         </div>
 
         <div className={styles.iconContainer}>

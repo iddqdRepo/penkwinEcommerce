@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         console.log("Retrieved all products from api/products.ts");
         res.status(200).json(products);
       } catch (error: any) {
-        console.log("eror retrieving products in api/products.ts");
+        console.log("error retrieving products in api/products.ts");
         res.status(404).json({ message: error.message });
       }
       break;
@@ -23,7 +23,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const productToAdd = await productModel.create(req.body);
         res.status(201).json({ success: true, data: productToAdd });
       } catch (error: any) {
-        console.log("eror posting products in api/products.ts");
+        console.log("error posting products in api/products.ts");
+        console.log("error is: ", error);
         res.status(400).json({ success: false, message: error });
       }
       break;

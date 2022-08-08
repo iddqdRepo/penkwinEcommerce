@@ -1,0 +1,105 @@
+.stayInTouchContainer {
+  background-color: #69727b0d;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stayInTouchTitle {
+  padding-top: 80px;
+  font-family: "Work Sans", Arial, Helvetica, sans-serif;
+  font-size: 1.16667em;
+  letter-spacing: 0.1em;
+
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 17.5px;
+}
+
+.stayInTouchSubtitle {
+  font-family: Merriweather, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #69727b;
+  line-height: 27px;
+  margin-bottom: 55px;
+}
+
+.emailContainer {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 560px;
+  justify-content: center;
+  margin-bottom: 65px;
+}
+
+.emailTextBox {
+  font-family: "Work Sans", Arial, Helvetica, sans-serif;
+  font-size: 1.16667em;
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border: 1px solid #7b7b7b;
+  flex-basis: 70%;
+}
+
+.subscribeButton {
+  flex-basis: 30%;
+  background-color: #388087;
+  font-family: "work-sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  border: 0;
+}
+
+@media only screen and (max-width: 650px) {
+  .emailContainer {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    width: 560px;
+    justify-content: center;
+    margin-bottom: 65px;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .emailTextBox {
+    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+    font-size: 1.16667em;
+    font-weight: 400;
+    font-size: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border: 1px solid #7b7b7b;
+    flex-basis: 60%;
+    max-width: 80%;
+  }
+
+  .subscribeButton {
+    flex-basis: 40%;
+    background-color: #388087;
+    font-family: "work-sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    border: 0;
+    max-width: 80%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .stayInTouchSubtitle {
+    font-family: Merriweather, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #69727b;
+    line-height: 27px;
+    margin-bottom: 55px;
+    text-align: center;
+  }
+}

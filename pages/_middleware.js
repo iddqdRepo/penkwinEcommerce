@@ -18,10 +18,10 @@ export default async function middleware(req) {
 
     try {
       console.log("trying to verify jwt");
-      const d = await jose
+      const verifying = await jose
         .jwtVerify(jwt, new TextEncoder().encode(`${secret}`))
         .then(console.log("hey"));
-      console.log("d", d);
+      console.log("verifying", verifying);
       return NextResponse.next();
     } catch (error) {
       console.log("error", error);

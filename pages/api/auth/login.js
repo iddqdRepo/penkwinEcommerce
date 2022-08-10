@@ -6,7 +6,7 @@ const secret = process.env.SECRET;
 export default async function login(req, res) {
   const { username, password } = req.body;
 
-  if (username === "Hello" && password === "Hey") {
+  if (username === "ad" && password === "ad") {
     console.log("Username and password are admin");
     const token = sign(
       {
@@ -28,6 +28,6 @@ export default async function login(req, res) {
     res.status(200).json({ message: "Success" });
   } else {
     console.log("Username", username, "password", password);
-    res.status(401).json({ message: "Invalid username or password" });
+    res.json({ message: "Invalid username or password" });
   }
 }

@@ -325,3 +325,10 @@
     display: none;
   }
 }
+
+/*! TEMPORARILY HIDING SLIDER WINDOW */
+@media only screen and (max-width: 960px) {
+  .sliderWindow {
+    display: none;
+  }
+}

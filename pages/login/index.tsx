@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 function Index() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const router = useRouter();
 
   const handleLogin = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -13,8 +15,9 @@ function Index() {
     const credentials = { username, password };
 
     const user = await axios.post("/api/auth/login", credentials);
-
-    console.log("user is", user);
+    if (user.data.message) {
+      router.push("/dashboard");
+    }
   };
 
   return (

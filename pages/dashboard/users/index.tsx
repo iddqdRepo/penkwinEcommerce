@@ -1,9 +1,9 @@
-import AdminSidebarComponent from "../../adminComponents/AdminDashboard/AdminSidebarComponent";
+import AdminSidebarComponent from "../../../adminComponents/AdminDashboard/AdminSidebarComponent";
 
-function Index() {
+function Users() {
   return (
     <>
-      <AdminSidebarComponent highlighted="Dashboard">
+      <AdminSidebarComponent highlighted="Users">
         <main id="content" className="flex-1 p-6 lg:px-8">
           <div className="max-w-full mx-auto">
             {/* <!-- Replace with your content --> */}
@@ -18,4 +18,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Users;
